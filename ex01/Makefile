@@ -1,19 +1,19 @@
 CC 			= g++  #-fsanitize=thread #-fno-omit-frame-pointer
 FLAGS		= -Wall -Wextra -Werror -std=c++98 -g
 
-NAME_PRJ	= ***CPP_ex00***
-NAME		= megaphone
+NAME_PRJ	= ***CPP_ex01***
+NAME		= PhoneBook
 # NAME_BONUS 	= 
 
 # LIBFT		= objs/libft/libft.a
 # HEADER 		= -I./header/
 
 SRC_DIR		= .
-SRC_FILES	=  megaphone.cpp
+SRC_FILES	=  PhoneBook.cpp Phonebook.h
 SRC 		= $(addprefix $(SRC_DIR), $(SRC_FILES))
 
 OBJ1_DIR	= ./objs/mandatory
-OBJ1_FILES 	=  megaphone.o
+OBJ1_FILES 	=  PhoneBook.o
 MAND_OBJS 	= $(addprefix $(OBJ1_DIR)/, $(OBJ1_FILES))
 
 # BONUS_DIR	= ./bonus/
