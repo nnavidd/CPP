@@ -9,7 +9,7 @@ int main (int ac, char **av)
 	if (ac == 1 && av[0]){
 		while (true)
 		{
-			std::cout << ORG "Plseas Select One Of The Ahead Commands: " GREEN "ADD" RESET " | " GREEN "SEARCH" RESET " | " GREEN "EXIT -> " RESET << std::flush;
+			std::cout << ORG "Plseas Select One Of The Ahead Commands: " GREEN "ADD" RESET " | " GREEN "SEARCH" RESET " | " GREEN "EXIT" RESET << std::endl << std::flush;
 			std::getline(std::cin, input);
 			if (!std::cin.fail() && (input == "ADD")){
 				pb.set_Contact();
