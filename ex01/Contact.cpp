@@ -1,36 +1,14 @@
-#include "Contact.hpp"
+#include "./Contact.hpp"
+// #include "./PhoneBook.hpp"
 
-Contact::Contact(){
-	Firstname = "";
-	Lastname = "";
-	Nickname = "";
-	Phonenumber = "";
-	Darkestsecret = "";
-}
+Contact::Contact():_FirstName(""), _LastName(""), _NickName(""), _PhoneNumber(""), _Secret("") {}
+Contact::~Contact() {}
 
-void	Contact::setfild(const std::string &fildname, const std::string& value)
-{
-	if (fildname == "firstname")
-		Firstname = value;
-	else if (fildname == "lastname")
-		Lastname = value;
-	else if (fildname == "phonenumber")
-		Phonenumber = value;
-	else if (fildname == "darkestsecret")
-		Darkestsecret = value;
-	else if (fildname == "nickname")
-		Nickname = value;
-}
+Contact::Contact(std::string firstname, std::string lastname, std::string nickname, std::string phonenum, std::string secret)
+	: _FirstName(firstname), _LastName(lastname), _NickName(nickname), _PhoneNumber(phonenum), _Secret(secret) {}
 
-std::string	Contact::getfild(const std::string &fildname) const
-{
-	if (fildname == "firstname")
-		return(Firstname);
-	else if (fildname == "lastname")
-		return(Lastname);
-	else if (fildname == "phonenumber")
-		return(Phonenumber);
-	else if (fildname == "darkestsecret")
-		return(Darkestsecret);
-	return (NULL);
-}
+std::string	Contact::getFirstName() const {return (_FirstName);};
+std::string	Contact::getLastName() const {return (_LastName);};
+std::string	Contact::getNickName() const {return (_NickName);};
+std::string	Contact::getPhoneNumber() const {return (_PhoneNumber);};
+std::string	Contact::getSecret() const {return (_Secret);};
