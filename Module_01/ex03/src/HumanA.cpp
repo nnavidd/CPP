@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanA.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/27 09:29:45 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/04/27 09:29:47 by nnabaeei         ###   ########.fr       */
+/*   Created: 2024/04/27 10:36:02 by nnabaeei          #+#    #+#             */
+/*   Updated: 2024/04/29 00:38:58 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./Zombie.hpp"
+#include "../include/HumanA.hpp"
 
-int main (int ac, char **av)
-{
-    if (ac == 3)
-    {
-        Zombie  *New = newZombie(av[1]);
-        New->Announce();
-        randomChump(av[2]);
-        delete New;
-    }
-    else
-    {
-        Zombie  *New = newZombie("Foo");
-        New->Announce();
-        randomChump("Joo");
-        delete New;
-    }
-    return (0);
+HumanA::HumanA(std::string name, Weapon& type): _Name(name), _Weapon(type){}
+HumanA::~HumanA(){}
+
+void	HumanA::attack( void ) const {
+	if (_Weapon.getType() != "")
+		std::cout << _Name << " attacks with their " << _Weapon.getType() << std::endl;
+	else
+		std::cout << _Name << " doesn't have a weapon to attack." << std::endl;
 }

@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/27 09:29:45 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/04/27 09:29:47 by nnabaeei         ###   ########.fr       */
+/*   Created: 2024/04/27 12:09:25 by nnabaeei          #+#    #+#             */
+/*   Updated: 2024/04/29 00:30:51 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./Zombie.hpp"
+#include "../include/Weapon.hpp"
 
-int main (int ac, char **av)
-{
-    if (ac == 3)
-    {
-        Zombie  *New = newZombie(av[1]);
-        New->Announce();
-        randomChump(av[2]);
-        delete New;
-    }
-    else
-    {
-        Zombie  *New = newZombie("Foo");
-        New->Announce();
-        randomChump("Joo");
-        delete New;
-    }
-    return (0);
+Weapon::Weapon(std::string type): _Type(type){};
+Weapon::~Weapon(){};
+void Weapon::setType(std::string type){
+	this->_Type = type;
+}
+const std::string& Weapon::getType(void) const {
+	return (_Type);
 }

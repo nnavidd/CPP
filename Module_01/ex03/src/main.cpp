@@ -5,28 +5,31 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/27 09:29:45 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/04/27 09:29:47 by nnabaeei         ###   ########.fr       */
+/*   Created: 2024/04/27 10:28:13 by nnabaeei          #+#    #+#             */
+/*   Updated: 2024/04/29 01:06:46 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./Zombie.hpp"
+#include "../include/Weapon.hpp"
+#include "../include/HumanA.hpp"
+#include "../include/HumanB.hpp"
 
-int main (int ac, char **av)
+int main()
 {
-    if (ac == 3)
-    {
-        Zombie  *New = newZombie(av[1]);
-        New->Announce();
-        randomChump(av[2]);
-        delete New;
-    }
-    else
-    {
-        Zombie  *New = newZombie("Foo");
-        New->Announce();
-        randomChump("Joo");
-        delete New;
-    }
-    return (0);
+	{
+		Weapon club = Weapon("crude spiked club");
+		HumanA bob("Bob", club);
+		bob.attack();
+		club.setType("some other type of club");
+		bob.attack();
+	}
+	{
+		Weapon club = Weapon("crude spiked club");
+		HumanB jim("Jim");
+		jim.setWeapon(club);
+		jim.attack();
+		club.setType("some other type of club");
+		jim.attack();
+	}
+return 0;
 }
