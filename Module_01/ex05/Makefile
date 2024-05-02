@@ -5,12 +5,12 @@
 #                                                     +:+ +:+         +:+      #
 #    By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/04/27 09:30:59 by nnabaeei          #+#    #+#              #
-#    Updated: 2024/05/02 13:26:07 by nnabaeei         ###   ########.fr        #
+#    Created: 2024/04/27 09:27:14 by nnabaeei          #+#    #+#              #
+#    Updated: 2024/04/30 21:52:21 by nnabaeei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME     := Moar_brainz
+NAME     := Harl
 CXX      := g++
 CXXFLAGS := -Wall -Wextra -Werror -std=c++98 -g
 CXXFLAGS += -fsanitize=address

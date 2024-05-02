@@ -6,12 +6,11 @@
 /*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 00:26:03 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/04/27 09:25:51 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/05/02 13:36:32 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string>
-#include <iostream>
+#include "../include/Header.hpp"
 
 int main ()
 {
@@ -19,11 +18,11 @@ int main ()
 	std::string		*stringPTR = &string;
 	std::string&	stringREF = string;
 
-	std::cout << "The memory address of the string variable:\t" << &string << std::endl
-				<< "The memory address held by stringPTR:\t\t" << stringPTR << std::endl
-				<< "The memory address held by stringREF:\t\t" << &stringREF << std::endl << std::endl
-				<< "The value of the string variable:\t\t" << string << std::endl
-				<< "The value pointed to by stringPTR:\t\t" << *stringPTR << std::endl
-				<< "The value pointed to by stringREF:\t\t" << stringREF << std::endl;
+	std::cout << ORG "The memory address of the string variable:\t" RESET GREEN << &string << std::endl
+				<< ORG "The memory address held by stringPTR:\t\t" RESET GREEN << stringPTR << std::endl
+				<< ORG "The memory address held by stringREF:\t\t" RESET GREEN << &stringREF << std::endl << std::endl
+				<< ORG "The value of the string variable:\t\t" RESET GREEN << string << std::endl
+				<< ORG "The value pointed to by stringPTR:\t\t" RESET GREEN << *stringPTR << std::endl
+				<< ORG "The value pointed to by stringREF:\t\t" RESET GREEN << stringREF << std::endl;
     return (0);
 }
