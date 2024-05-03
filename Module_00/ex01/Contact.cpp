@@ -1,5 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Contact.cpp                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/27 09:28:11 by nnabaeei          #+#    #+#             */
+/*   Updated: 2024/04/27 09:29:37 by nnabaeei         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "./Contact.hpp"
-// #include "./PhoneBook.hpp"
 
 Contact::Contact():_FirstName(""), _LastName(""), _NickName(""), _PhoneNumber(""), _Secret("") {}
 Contact::~Contact() {}
