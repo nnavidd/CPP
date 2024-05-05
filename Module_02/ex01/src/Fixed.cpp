@@ -6,15 +6,26 @@
 /*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 16:27:39 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/05/04 08:57:10 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/05/05 22:17:37 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/Fixed.hpp"
 
 Fixed::Fixed(): _raw(0){
-	std::cout << GREEN "Default constructor called " RESET << std::endl;
+	std::cout << GREEN "Default constructor called" RESET << std::endl;
 }
+
+Fixed::Fixed(int const raw){
+	std::cout << "Int constructor called" << std::endl;
+	this->_raw = raw << _frac_bits;
+}
+
+Fixed::Fixed(float const raw){
+	std::cout << "Float constructor called" << std::endl;
+	this->_raw = roundf(raw * (1 << _frac_bits));
+}
+
 Fixed::Fixed(Fixed const & other) {
 	std::cout << RED "Copy constructor called" RESET << std::endl;
 	*this = other;
@@ -30,8 +41,18 @@ Fixed & Fixed::operator=(Fixed const & other)
 	return (*this);
 }
 
+float Fixed::toFloat( void ) const
+{
+	return ((float)_raw / (1 << _frac_bits));
+}
+
+int	Fixed::toInt( void ) const
+{
+	return (this->_raw >> _frac_bits);
+} 
+
 int	Fixed::getRawBits( void ) const{
-	std::cout << ORG "getRawBits member function called" RESET << std::endl;
+	// std::cout << ORG "getRawBits member function called" RESET << std::endl;
 	return (this->_raw);
 }
 
@@ -41,6 +62,6 @@ void Fixed::setRawBits( int const raw ){
 
 std::ostream & operator<<(std::ostream & out, Fixed const & other)
 {
-	out << "The Value Of The Integer Is: " << other.getRawBits();
+	out << other.toFloat();
 	return (out);
 }
