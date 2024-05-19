@@ -6,14 +6,14 @@
 /*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 23:55:46 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/05/15 10:58:59 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/05/19 10:11:03 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/FragTrap.hpp"
 
 FragTrap::FragTrap( void ){
-	std::cout <<  "FragTrap default constructor is called!" << std::endl;
+	std::cout <<  BLUE "FragTrap" RESET " default constructor is called!" << std::endl;
 }
 
 FragTrap::FragTrap( std::string name): ClapTrap(name){
@@ -37,7 +37,7 @@ FragTrap & FragTrap::operator=(FragTrap const & other){
 }
 
 FragTrap::~FragTrap( void ){
-	std::cout << "FragTrap " GREEN << _name << RESET " destructor is called!" << std::endl;
+	std::cout << BLUE "FragTrap " GREEN << _name << RESET " destructor is called!" << std::endl;
 }
 
 void	FragTrap::highFivesGuys( void ){

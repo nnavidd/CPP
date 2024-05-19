@@ -6,7 +6,7 @@
 /*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 10:01:24 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/05/17 22:29:45 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/05/19 10:16:35 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,13 @@
 # include <string>
 # include <cmath>
 
-# define BLUE	"\033[38;5;4m"
-# define GREEN	"\033[38;5;2m"
-# define ORG	"\033[38;5;214m"
-# define RED	"\033[38;5;196m"
-# define RESET	"\033[0m"
+# define BLUE		"\033[38;5;4m"
+# define MAGENTA	"\033[38;5;5m"
+# define CYAN		"\033[38;5;44m"
+# define GREEN		"\033[38;5;2m"
+# define ORG		"\033[38;5;214m"
+# define RED		"\033[38;5;196m"
+# define RESET		"\033[0m"
 
 
 class ClapTrap{

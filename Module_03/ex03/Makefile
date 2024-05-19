@@ -6,14 +6,14 @@
 #    By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/27 09:27:14 by nnabaeei          #+#    #+#              #
-#    Updated: 2024/05/17 09:38:00 by nnabaeei         ###   ########.fr        #
+#    Updated: 2024/05/19 10:34:52 by nnabaeei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME     := DiamondTrap
 CXX      := g++
 CXXFLAGS := -Wall -Wextra -Werror -std=c++98 -g
-CXXFLAGS += -fsanitize=address
+CXXFLAGS += -fsanitize=address -Wshadow -Wno-shadow
 
 # Directories
 SRC_DIR := src
