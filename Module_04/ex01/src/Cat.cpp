@@ -6,7 +6,7 @@
 /*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 01:51:02 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/05/23 16:32:43 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/05/24 09:58:42 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Cat::Cat( void ) : Animal("CAT") {
 	std::cout << MAGENTA "Cat " RESET " default constructor is called!" << std::endl;
-	_idea = new Brain();
+	_brain = new Brain();
 }
 Cat::Cat(Cat const & other): Animal(other){
 	std::cout << MAGENTA "Cat " RESET " copy constructor is called!" << std::endl;
@@ -28,15 +28,15 @@ Cat & Cat::operator=(Cat const & other) {
 }
 Cat::~Cat( void ){
 	std::cout << MAGENTA "Cat " RESET " destructor is called!" << std::endl;
-	delete	_idea;
+	delete	_brain;
 }
 
 void Cat::makeSound( void ) const {
 	std::cout << "the animal of type " GREEN << getType() << RESET " is miaowing!" << std::endl;
 }
 // void Cat::setData(std::string idea){
-// 	_idea->BsetData(idea);
+// 	_brain->BsetData(idea);
 // }
 // void Cat::getData( void ) const {
-// 	std::cout << _idea->BgetData() << std::endl;
+// 	std::cout << _brain->BgetData() << std::endl;
 // }

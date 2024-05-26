@@ -6,7 +6,7 @@
 /*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 14:10:42 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/05/24 01:02:53 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/05/26 17:43:17 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ class Brain{
 		Brain(Brain const &);
 		Brain & operator=(Brain const &);
 		~Brain( void );
+
 		bool BsetData(int index, std::string idea);
 		std::string BgetData( int index ) const;
 };

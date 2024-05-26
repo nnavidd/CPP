@@ -6,7 +6,7 @@
 /*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 01:39:03 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/05/23 16:32:32 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/05/24 09:57:41 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 class Cat : public Animal{
 	private:
-		Brain	*_idea;
+		Brain	*_brain;
 	public:
 		Cat( void );
 		Cat(Cat const &);

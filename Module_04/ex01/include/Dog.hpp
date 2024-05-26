@@ -6,7 +6,7 @@
 /*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 01:39:03 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/05/24 01:09:27 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/05/24 09:57:14 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 class Dog : public Animal{
 	private:
-		Brain	*_idea;
+		Brain	*_brain;
 	public:
 		Dog( void );
 		Dog(Dog const &);
