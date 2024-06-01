@@ -6,12 +6,11 @@
 /*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 12:35:30 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/06/01 09:42:00 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/01 17:09:02 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/Character.hpp"
-#include "../include/AMateria.hpp"
 
 Character::Character( void ) : _name(""){
  	std::cout << MAGENTA "Character" RESET " default constructor is called" << std::endl;
@@ -48,7 +47,7 @@ Character::~Character() {
 }
 
 const std::string& Character::getName() const {
- 	std::cout << MAGENTA "Character" RESET " getName is called" << std::endl;
+ 	// std::cout << MAGENTA "Character" RESET " getName is called" << std::endl;
 	return _name;
 }
 

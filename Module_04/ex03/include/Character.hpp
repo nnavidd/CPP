@@ -6,7 +6,7 @@
 /*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 00:41:13 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/06/01 09:37:24 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/01 10:16:14 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 # define CHARACTER_HPP
 
 # include "ICharacter.hpp"
-
-class AMareria;
+#include "../include/AMateria.hpp"
 
 class Character : public ICharacter {
 

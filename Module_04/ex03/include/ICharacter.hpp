@@ -6,7 +6,7 @@
 /*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 00:08:38 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/06/01 09:53:57 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/01 10:16:39 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # define ORG		"\033[38;5;214m"
 # define RED		"\033[38;5;196m"
 # define RESET		"\033[0m"
-
 
 # include <iostream>
 # include <string>
