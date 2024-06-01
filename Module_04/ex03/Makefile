@@ -6,11 +6,11 @@
 #    By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/27 09:27:14 by nnabaeei          #+#    #+#              #
-#    Updated: 2024/05/27 01:36:41 by nnabaeei         ###   ########.fr        #
+#    Updated: 2024/06/01 01:12:07 by nnabaeei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME     := ex02
+NAME     := ex03
 CXX      := g++
 CXXFLAGS := -Wall -Wextra -Werror -std=c++98 -g
 CXXFLAGS += -fsanitize=address -Wshadow -Wno-shadow

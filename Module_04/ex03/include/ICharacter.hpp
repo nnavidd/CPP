@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.hpp                                       :+:      :+:    :+:   */
+/*   ICharacter.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/27 10:05:21 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/06/01 09:53:25 by nnabaeei         ###   ########.fr       */
+/*   Created: 2024/05/28 00:08:38 by nnabaeei          #+#    #+#             */
+/*   Updated: 2024/06/01 09:53:57 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef AMATERIA_HPP
-# define AMATERIA_HPP
+#ifndef ICHARACTER_HPP
+# define ICHARACTER_HPP
 
 # define BLUE		"\033[38;5;4m"
 # define MAGENTA	"\033[38;5;5m"
@@ -21,24 +21,20 @@
 # define RED		"\033[38;5;196m"
 # define RESET		"\033[0m"
 
+
 # include <iostream>
 # include <string>
 
-#include "../include/ICharacter.hpp"
+class AMateria;
 
-class AMateria{
-	protected:
-		std::string	_type;
+class ICharacter
+{
 	public:
-		AMateria( void );
-		AMateria(AMateria const &);
-		AMateria(std::string const & type);
-		AMateria & operator=(AMateria const &);
-		virtual ~AMateria( void );
-
-		std::string const & getType() const; //Returns the materia type
-		virtual AMateria* clone() const = 0;
-		virtual void use(ICharacter& target);
+		virtual ~ICharacter() {}
+		virtual std::string const & getName() const = 0;
+		virtual void equip(AMateria* m) = 0;
+		virtual void unequip(int idx) = 0;
+		virtual void use(int idx, ICharacter& target) = 0;
 };
 
 #endif
