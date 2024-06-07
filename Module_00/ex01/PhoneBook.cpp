@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 09:28:46 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/04/27 09:28:48 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/07 13:35:14 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,10 @@ void PhoneBook::get_Contact()
 {
 	int i = -1;
 
+	if (_Counter == 0){
+		std::cout << RED "Phonebook is empty!" RESET<< std::endl;
+		return ; 
+	}
 	std::cout << " ___________________________________________________" << std::endl;
 	std::cout << "| " << ORG "  INDEX   " RESET << " | " << ORG "FIRST_NAME" RESET << " | " << ORG "LAST__NAME" RESET << " | " << ORG "NICK__NAME" RESET << " |" << std::endl;
 	std::cout << "|____________|____________|____________|____________|" << std::endl;
