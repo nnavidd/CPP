@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 09:28:53 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/04/27 09:28:58 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/07 15:14:50 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # include <limits>
 # include <iomanip>
 # include <stdio.h>
+# include <sstream>
 
 # include "./Contact.hpp"
 

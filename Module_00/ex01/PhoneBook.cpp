@@ -6,7 +6,7 @@
 /*   By: nnabaeei <nnabaeei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 09:28:46 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/06/07 13:35:14 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/07 15:25:49 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,24 +24,24 @@ std::string PhoneBook::trim_Display(std::string contact_info)
 
 int PhoneBook::check_Contact_Index()
 {
-	int		input;
-	bool	valid = false;
-	do
-	{
-		std::cout << ORG "\nPlease Select Your Desired Contact Index: " RESET << std::flush;
-		std::cin >> input;
-		if (!std::cin.fail() && (input > 0 && input <= _Index))
+	int input;
+	bool valid = false;
+	std::string line;
+
+	do {
+		std::cout << ORG "\nPlease Select Your Desired Contact Index: " RESET;
+		std::getline(std::cin, line);
+		if (line.empty())
+			continue;
+		std::stringstream ss(line);
+		ss >> input;
+		if (!ss.fail() && ss.eof() && input > 0 && input <= _Index) {
 			valid = true;
-		else
-		{
+		} else {
 			std::cout << RED "This Index Number Doesn't Exist In The Phonebook!" RESET << std::endl;
-			std::cin.clear();
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		}
 	} while (!valid);
-	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-	return (input - 1);
-
+	return input - 1;
 }
 
 void PhoneBook::get_Contact()
