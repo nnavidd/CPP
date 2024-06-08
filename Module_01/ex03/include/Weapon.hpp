@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 10:29:54 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/04/29 09:59:39 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/07 18:32:54 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ class Weapon{
 	public:
 		Weapon(std::string type);
 		~Weapon();
-		void				setType(std::string type);
-		const std::string&	getType(void) const;
+		void				setType( std::string type );
+		const std::string &	getType(void) const;
 };
 
 #endif

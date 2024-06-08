@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 09:30:17 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/04/27 09:30:21 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/07 17:11:46 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class Zombie{
     std::string _Name;
 };
 
-Zombie* newZombie(std::string name);
+Zombie* newZombie( std::string name );
 void    randomChump( std::string name );
 
 #endif

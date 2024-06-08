@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 12:09:25 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/04/29 00:30:51 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/07 18:36:37 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,6 @@ Weapon::~Weapon(){};
 void Weapon::setType(std::string type){
 	this->_Type = type;
 }
-const std::string& Weapon::getType(void) const {
+const std::string & Weapon::getType( void ) const {
 	return (_Type);
 }
