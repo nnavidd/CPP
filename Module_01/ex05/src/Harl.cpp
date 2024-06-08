@@ -6,22 +6,14 @@
 /*   By: nnabaeei <nnabaeei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:50:41 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/06/08 11:06:09 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/08 16:22:51 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/Harl.hpp"
 
-Harl::Harl(){
-	_HarlAction["DEBUG"] = &Harl::debug;
-	_HarlAction["INFO"] = &Harl::info;
-	_HarlAction["WARNING"] = &Harl::warning;
-	_HarlAction["ERROR"] = &Harl::error;
-}
-
-Harl::~Harl(){
-	
-}
+Harl::Harl(){}
+Harl::~Harl(){}
 
 void Harl::debug( void ) {
 	std::cout << GREEN << "DEBUG:" ORG " I love having extra bacon for my 7XL-double-cheese-triple-pickle-special-ketchup burger. I really do!" RESET << std::endl;
@@ -37,13 +29,18 @@ void Harl::error( void ) {
 }
 
 
-void	Harl::complian(std::string level)
+void	Harl::complain(std::string level)
 {
-	std::map<std::string, Level>::iterator iter = _HarlAction.find(level);
-	if (iter != _HarlAction.end())
-		(this->*_HarlAction[level])();
-	else if (!level.compare("exit"))
-		std::cout << ORG "Project is exited" RESET<< std::endl;
-	else
-		std::cout <<RED "Unknown Level!!!" RESET<< std::endl;
+	void (Harl::*LevelFunc[])() = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+	std::string	HarlLevel[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	int			count;
+
+	for (count = 0; count < 4 && HarlLevel[count] != level; ++count);
+	if (count < 4)
+		(this->*LevelFunc[count])();
+	else {
+		if (!level.compare("exit"))
+			return ;
+		std::cout << RED "Unknown Level!!!" RESET << std::endl;
+	}
 }

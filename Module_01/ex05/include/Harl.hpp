@@ -6,7 +6,7 @@
 /*   By: nnabaeei <nnabaeei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:44:12 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/06/08 11:08:34 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/08 15:59:33 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,9 @@ class Harl {
 		void warning( void );
 		void error( void );
 
-		std::map<std::string, Level> _HarlAction;
-
 	public:
 		Harl();
 		~Harl();
-		void complian(std::string);
+		void complain(std::string);
 };
 #endif

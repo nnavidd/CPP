@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:44:12 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/05/02 11:49:40 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/08 16:26:50 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,10 @@ class Harl {
 		void warning( void );
 		void error( void );
 
-		std::map<std::string, Level> _HarlAction;
-
 	public:
 		Harl();
 		~Harl();
-		void complian(std::string);
+		void complain(std::string);
 		void HarlFilter(std::string);
 };
 #endif
