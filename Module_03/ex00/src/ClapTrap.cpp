@@ -6,7 +6,7 @@
 /*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 10:02:47 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/05/14 17:56:15 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/05/14 23:48:20 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ ClapTrap & ClapTrap::operator=(ClapTrap const & other){
 }
 
 ClapTrap::~ClapTrap( void ){
-	std::cout << ORG "ClapTrap destructor is called!" RESET << std::endl;
+	std::cout << ORG "ClapTrap " GREEN << _name << ORG " destructor is called!" RESET << std::endl;
 }
 
 void	ClapTrap::attack(std::string const & target){
 	if(_energy_point && _hit_point){
-		std::cout << GREEN << _name << ORG " is attacking: " << RED << target << RESET << std::endl;
+		std::cout << ORG "ClapTrap " GREEN << _name << ORG " attacks: " << RED << target << ORG " causing " RED << _attack_damage << ORG " points of damage." RESET << std::endl;
 		_energy_point--;
 	}
 	if (_hit_point == 0) 
@@ -71,7 +71,7 @@ void 	ClapTrap::beRepaired(unsigned int amount){
 }
 
 void	ClapTrap::report( void ) const {
-	std::clog << GREEN << _name <<  ORG" has " RED <<  _hit_point << ORG " Health point, " <<
+	std::cout << GREEN << _name <<  ORG" has " RED <<  _hit_point << ORG " Health point, " <<
 	RED << _energy_point << ORG " Energy point, and " RED << _attack_damage << ORG " Attack damage." << RESET << std::endl;
 	return ;
 }

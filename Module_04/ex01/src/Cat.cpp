@@ -6,24 +6,27 @@
 /*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 01:51:02 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/05/24 09:58:42 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/05/27 01:25:35 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../include/Cat.hpp"
 
-Cat::Cat( void ) : Animal("CAT") {
+Cat::Cat( void ) : Animal("CAT"), _brain(new Brain()){
 	std::cout << MAGENTA "Cat " RESET " default constructor is called!" << std::endl;
-	_brain = new Brain();
+	// _brain = new Brain();
 }
-Cat::Cat(Cat const & other): Animal(other){
+Cat::Cat(Cat const & other): Animal(other), _brain(new Brain(*other._brain)){
 	std::cout << MAGENTA "Cat " RESET " copy constructor is called!" << std::endl;
-	*this = other;
+	// *this = other;
 }
 Cat & Cat::operator=(Cat const & other) {
 	std::cout << MAGENTA "Cat " RESET " copy assignment is called!" << std::endl;
-	if (this != &other)
+	if (this != &other){
 		Animal::operator=(other);
+		delete _brain;
+		_brain = new Brain(*other._brain);	
+	}
 	return (*this);
 }
 Cat::~Cat( void ){
@@ -34,9 +37,9 @@ Cat::~Cat( void ){
 void Cat::makeSound( void ) const {
 	std::cout << "the animal of type " GREEN << getType() << RESET " is miaowing!" << std::endl;
 }
-// void Cat::setData(std::string idea){
-// 	_brain->BsetData(idea);
-// }
-// void Cat::getData( void ) const {
-// 	std::cout << _brain->BgetData() << std::endl;
-// }
+bool Cat::setData(int index, std::string const idea){
+	return (_brain->BsetData(index, idea));
+}
+void Cat::getData( int index ) const {
+	std::cout << _brain->BgetData(index) << std::endl;
+}

@@ -6,7 +6,7 @@
 /*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 01:39:03 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/05/24 09:57:41 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/05/27 01:25:26 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class Cat : public Animal{
 		~Cat ( void );
 		
 		void makeSound( void ) const;
-		// void setData(std::string const idea);
-		// void getData( void ) const;
+		bool setData(int index, std::string const idea);
+		void getData( int index ) const;
 };
 #endif
