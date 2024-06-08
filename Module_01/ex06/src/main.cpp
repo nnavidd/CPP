@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:48:28 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/05/02 12:00:56 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/08 11:35:51 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,11 @@ int main(int ac, char **av)
 
 	do
 	{
-		std::cout << BLUE "Insert Desired Harl Level: " << std::endl;
+		std::cout << BLUE"Insert Desired Harl Level:" RESET"{" GREEN"DEBUG" RESET "," GREEN" INFO" RESET"," GREEN" WARNING" RESET"," GREEN" ERROR" RESET"}" << std::endl;
 		std::getline(std::cin, level);
 		// harl.complian(level);
 		harl.HarlFilter(level);
+		std::cout << std::endl;
 	} while (ac && av[0] && level.compare("exit"));
     return (0);
 }
