@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Point.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 08:35:45 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/05/14 09:27:11 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/09 20:53:37 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 Point::Point(): _x(0), _y(0){}
 Point::Point(float const a, float const b): _x(a), _y(b){}
 Point::Point(Point const & other):_x(other.getX()), _y(other.getY()){}
+
+//Here I implement the operation= function in two different methods.
 Point & Point::operator=(Point const & other){
 	if (this != &other){
 		( Fixed ) this->_x = other.getX();
@@ -23,9 +25,9 @@ Point & Point::operator=(Point const & other){
 	return (*this);
 
 //second method to 
-	this->~Point();
-	new(this) Point(other);
-	return (*this);
+	// this->~Point();
+	// new(this) Point(other);
+	// return (*this);
 }
 Point::~Point( void ){}
 

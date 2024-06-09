@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 14:51:31 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/05/14 09:26:27 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/09 20:58:47 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,14 @@ int main(int ac, char **av) {
 	Point testPoint(4, 5);
 
 	if (bsp(a, b, c, testPoint)) {
-		std::cout << "The point is inside the triangle." << std::endl;
+		std::cout << GREEN "The point is inside the triangle." RESET << std::endl;
+		std::cout << BLUE "▲: " GREEN "a" ORG<< a << GREEN " b" ORG<< b << GREEN " c" ORG << c << RED" ? " GREEN "point" ORG << testPoint << " " << (bsp(a, b, c, testPoint) ? "✅" : "❌") << RESET << std::endl;
 	} else {
-		std::cout << "The point is outside the triangle." << std::endl;
+		std::cout << BLUE "▲: " GREEN "a" ORG<< a << GREEN " b" ORG<< b << GREEN " c" ORG << c << RED" ? " GREEN "point" ORG << testPoint << " " << (bsp(a, b, c, testPoint) ? "✅" : "❌") << RESET << std::endl;
+		std::cout << GREEN "The point is outside the triangle." RESET << std::endl;
 	}
 
-	if(ac == 2 && av[1][0] == '?'){
+	if(ac == 2 && av[1][0] == '!'){
 		check(93, 2, 2, 72, 70, 81, 44, 68); //inside -> ✅
 		check(93, 2, 2, 72, 70, 81, 5, 72); // near edge -> ✅
 		check(93, 2, 2, 72, 70, 81, 47.5f, 37); // on edge -> ❌
