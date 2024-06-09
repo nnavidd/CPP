@@ -3,25 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 16:27:39 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/05/05 22:17:37 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/08 14:36:27 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/Fixed.hpp"
 
-Fixed::Fixed(): _raw(0){
+Fixed::Fixed(): _raw(0) {
 	std::cout << GREEN "Default constructor called" RESET << std::endl;
 }
 
-Fixed::Fixed(int const raw){
+Fixed::Fixed(int const raw) {
 	std::cout << "Int constructor called" << std::endl;
 	this->_raw = raw << _frac_bits;
 }
 
-Fixed::Fixed(float const raw){
+Fixed::Fixed(float const raw) {
 	std::cout << "Float constructor called" << std::endl;
 	this->_raw = roundf(raw * (1 << _frac_bits));
 }
@@ -30,7 +30,7 @@ Fixed::Fixed(Fixed const & other) {
 	std::cout << RED "Copy constructor called" RESET << std::endl;
 	*this = other;
 }
-Fixed::~Fixed(){
+Fixed::~Fixed() {
 	std::cout << GREEN "Destructor called" RESET << std::endl;
 }
 Fixed & Fixed::operator=(Fixed const & other)

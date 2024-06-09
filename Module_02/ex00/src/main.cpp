@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 14:51:31 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/05/04 00:44:23 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/08 14:31:31 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@ int main( void )
 	Fixed b( a );
 	Fixed c;
 	c = b;
+	std::cout << std::endl;
+	std::cout << a.getRawBits() << std::endl;
+	a.setRawBits(4);
 	std::cout << a.getRawBits() << std::endl;
 	std::cout << b.getRawBits() << std::endl;
 	std::cout << c.getRawBits() << std::endl;
