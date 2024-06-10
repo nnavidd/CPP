@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ICharacter.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 00:08:38 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/06/01 10:16:39 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/10 19:30:14 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@
 
 class AMateria;
 
-class ICharacter
-{
+class ICharacter {
 	public:
 		virtual ~ICharacter() {}
 		virtual std::string const & getName() const = 0;

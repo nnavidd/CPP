@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 01:51:02 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/05/27 01:25:35 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/10 19:14:49 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,5 @@ bool Cat::setData(int index, std::string const idea){
 	return (_brain->BsetData(index, idea));
 }
 void Cat::getData( int index ) const {
-	std::cout << _brain->BgetData(index) << std::endl;
+	std::cout << ORG << _type << RESET " type is calling: " <<  _brain->BgetData(index) << std::endl;
 }

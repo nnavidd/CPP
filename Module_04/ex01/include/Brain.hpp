@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 14:10:42 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/05/26 17:43:17 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/10 19:18:06 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,17 @@ A copy of a Dog or a Cat mustn’t be shallow. Thus, you have to test that your 
 are deep copies!
 */
 
-class Brain{
+class Brain {
 	protected:
 		std::string _ideas[100];
+		
 	public:
 		Brain( void );
 		Brain(Brain const &);
 		Brain & operator=(Brain const &);
 		~Brain( void );
 
-		bool BsetData(int index, std::string idea);
+		bool BsetData(int index, std::string const idea);
 		std::string BgetData( int index ) const;
 };
 

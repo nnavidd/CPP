@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 01:23:55 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/05/27 01:36:51 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/10 19:27:37 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ Animal::~Animal(){
 	std::cout << BLUE "Animal " RESET "destructor is called!" << std::endl;
 }
 std::string	Animal::getType( void ) const{
-	std::cout << BLUE "Animal " RESET "getType func is called!" << std::endl;
+	// std::cout << BLUE "Animal " RESET "getType func is called!" << std::endl;
 	return (this->_type);
 }
+// void Animal::makeSound() const{
+	
+// }

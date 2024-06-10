@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cure.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 23:40:32 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/06/01 16:40:08 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/10 19:35:22 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,16 @@
 # include <string>
 # include "./AMateria.hpp"
 
-class Cure: public AMateria{
+class Cure: public AMateria {
 	private:
 	public:
 		Cure( void );
-		Cure(Cure const &);
-		Cure & operator=(Cure const &);
+		Cure( Cure const & );
+		Cure & operator=( Cure const & );
 		~Cure( void );
 
-		AMateria *clone(void) const;
-		void use(ICharacter &target);
+		AMateria *clone( void ) const;
+		void use( ICharacter & target );
 };
 
 #endif

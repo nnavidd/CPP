@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AMateria.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 10:05:21 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/06/01 09:53:25 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/10 19:30:33 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,10 @@
 
 #include "../include/ICharacter.hpp"
 
-class AMateria{
+class AMateria {
 	protected:
 		std::string	_type;
+		
 	public:
 		AMateria( void );
 		AMateria(AMateria const &);

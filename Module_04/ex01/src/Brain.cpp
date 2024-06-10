@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 14:31:17 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/05/24 01:25:45 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/10 19:15:24 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ Brain & Brain::operator=(Brain const & other){
 Brain::~Brain( void ){
 	std::cout << BLUE "Brain " RESET "destructor is called!" << std::endl;
 }
-bool Brain::BsetData(int index, std::string idea){
+bool Brain::BsetData(int index, std::string const idea){
 	std::cout << BLUE "Brain " RESET "setData is called!" << std::endl;
 	if (index > -1 && index < 100){
 		std::cout << BLUE "Brain " RESET "Idea NO.:" RED << index << RESET " is set!" << std::endl;

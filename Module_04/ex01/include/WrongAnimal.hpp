@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 13:14:59 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/05/20 14:02:45 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/10 18:48:38 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ class WrongAnimal {
 
 protected:
 	std::string type;
+	
 public:
 	WrongAnimal(void);
 	WrongAnimal(const WrongAnimal &other);

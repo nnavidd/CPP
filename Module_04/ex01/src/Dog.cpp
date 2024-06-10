@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 01:51:02 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/05/26 23:54:24 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/10 19:15:07 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ Dog::~Dog( void ){
 void Dog::makeSound( void ) const {
 	std::cout << "the animal of type " GREEN << getType() << RESET " is barking!" << std::endl;
 }
-bool Dog::setData(int index, std::string idea){
+bool Dog::setData(int index, std::string const idea){
 	return (_brain->BsetData(index, idea));
 }
 void Dog::getData( int index ) const {
-	std::cout << _brain->BgetData(index) << std::endl;
+	std::cout << ORG << _type << RESET " type is calling: " <<  _brain->BgetData(index) << std::endl;
 }

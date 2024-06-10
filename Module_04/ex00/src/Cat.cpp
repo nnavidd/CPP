@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 01:51:02 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/05/20 10:55:46 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/10 15:30:53 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ Cat::Cat( void ) : Animal("CAT") {
 }
 Cat::Cat(Cat const & other): Animal(other){
 	std::cout << MAGENTA "Cat " RESET " copy constructor is called!" << std::endl;
-	*this = other;
+	// *this = other;
 }
 Cat & Cat::operator=(Cat const & other) {
 	std::cout << MAGENTA "Cat " RESET " copy assignment is called!" << std::endl;

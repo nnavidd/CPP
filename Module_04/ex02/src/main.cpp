@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 01:20:58 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/05/27 01:40:40 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/10 19:25:34 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int main (int ac, char **av){
 	{
 		const Animal* j = new Dog();
 		const Animal* i = new Cat();
+		j->makeSound();
+		i->makeSound();
 		delete j;//should not create a leak
 		delete i;
 	}

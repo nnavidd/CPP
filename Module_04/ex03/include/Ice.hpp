@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Ice.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 23:37:05 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/05/28 01:18:49 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/10 19:30:19 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <string>
 # include "./AMateria.hpp"
 
-class Ice: public AMateria{
+class Ice: public AMateria {
 	private:
 	public:
 		Ice( void );

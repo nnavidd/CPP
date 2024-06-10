@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 00:44:58 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/05/30 10:56:38 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/10 19:29:57 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@
 # include "./AMateria.hpp"
 # include "./IMateriaSource.hpp"
 
-class MateriaSource : public IMateriaSource
-{
+class MateriaSource : public IMateriaSource {
 	private:
 		AMateria *_memory[4];
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 01:51:02 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/05/20 10:56:27 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/10 15:31:19 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ Dog::Dog( void ) : Animal("DOG") {
 }
 Dog::Dog(Dog const & other): Animal(other){
 	std::cout << ORG "Dog " RESET " copy constructor is called!" << std::endl;
-	*this = other;
+	// *this = other;
 }
 Dog & Dog::operator=(Dog const & other) {
 	std::cout << ORG "Dog " RESET " copy assignment is called!" << std::endl;

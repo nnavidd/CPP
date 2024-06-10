@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 01:39:03 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/05/27 01:25:26 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/10 18:48:21 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 class Cat : public Animal{
 	private:
 		Brain	*_brain;
+		
 	public:
 		Cat( void );
 		Cat(Cat const &);

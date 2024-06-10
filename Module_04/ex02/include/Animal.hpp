@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 01:16:01 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/05/27 01:37:03 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/10 19:22:29 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ class Animal{
 		virtual ~Animal( void );
 
 		virtual void makeSound() const = 0;
+		// virtual void makeSound() const;
 		virtual std::string getType( void ) const;
 };
 

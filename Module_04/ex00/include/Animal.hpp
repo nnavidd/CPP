@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 01:16:01 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/05/20 14:04:54 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/10 16:47:13 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@
 # define RED		"\033[38;5;196m"
 # define RESET		"\033[0m"
 
-
-class Animal{
+class Animal {
 	protected:
 		std::string _type;
+		
 	public:
 		Animal( void );
 		Animal(std::string type);

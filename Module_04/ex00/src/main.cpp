@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 01:20:58 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/05/20 14:01:17 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/10 18:46:01 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,15 @@ int main (int ac, char **av){
 	if(ac && av[0])
 	{
 		Dog	instance;
-		Dog	instance1(instance);
-		Dog	instance2;
-
-		instance2 = instance1;
-	}
 	std::cout << std::endl;
+		Dog	instance1(instance);
+	std::cout << std::endl;
+		Dog	instance2;
+	std::cout << std::endl;
+		instance2 = instance1;
+	std::cout << std::endl;
+	}
+	std::cout << "---------" << std::endl;
 	{
 		Dog	instance;
 		Cat	instance1;
@@ -49,8 +52,8 @@ int main (int ac, char **av){
 		const Animal* meta = new Animal();
 		const Animal* j = new Dog();
 		const Animal* i = new Cat();
-		std::cout << j->getType() << " " << std::endl;
-		std::cout << i->getType() << " " << std::endl;
+		std::cout << RED "the type of j: " RESET << j->getType() << " " << std::endl;
+		std::cout << RED "the type of i: " RESET << i->getType() << " " << std::endl;
 		i->makeSound(); //will output the cat sound!
 		j->makeSound();
 		meta->makeSound();
@@ -72,7 +75,7 @@ int main (int ac, char **av){
 		const WrongAnimal* meta = new WrongAnimal();
 		const WrongAnimal* i = new WrongCat();
 		std::cout << "The animal type " GREEN << i->getType() <<RESET " makeSound funciton returns:" << std::endl;
-		i->makeSound(); //will output the cat sound!
+		i->makeSound(); //will output the cat sound if the makeSound funciton in the wrongAnimal is defined as virtual!
 		std::cout << "The animal type " GREEN << meta->getType() <<RESET " makeSound funciton returns:" << std::endl;
 		meta->makeSound();
 		delete meta;
