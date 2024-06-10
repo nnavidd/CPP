@@ -6,7 +6,7 @@
 /*   By: nnabaeei <nnabaeei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 18:19:56 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/06/10 13:06:12 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/10 15:18:26 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,11 @@ ScavTrap::ScavTrap(ScavTrap const & other): ClapTrap(other) {
 ScavTrap & ScavTrap::operator=(ScavTrap const & other) {
 	std::cout << MAGENTA "ScavTrap " RESET "assignment operator is called!" << std::endl;
 	if (this != &other){
+		ClapTrap::operator=(other);
 		_name = other._name;
 		_hit_point = other._hit_point;
 		_energy_point = other._energy_point;
-		_attack_damage = other._attack_damage; // Fix typo here
+		_attack_damage = other._attack_damage;
 	}
 	return (*this);
 }
