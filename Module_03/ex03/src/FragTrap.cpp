@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 23:55:46 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/05/19 10:11:03 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/10 13:06:01 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/FragTrap.hpp"
 
-FragTrap::FragTrap( void ){
+FragTrap::FragTrap( void ): ClapTrap(){
 	std::cout <<  BLUE "FragTrap" RESET " default constructor is called!" << std::endl;
 }
 
@@ -29,10 +29,12 @@ FragTrap::FragTrap(FragTrap const & other): ClapTrap(other){
 
 FragTrap & FragTrap::operator=(FragTrap const & other){
 	std::cout << BLUE "FragTrap" RESET " assignment operator is called!" << std::endl;
-	_name = other._name;
-	_hit_point = other._hit_point;
-	_energy_point = other._energy_point;
-	_attack_damage = other._attack_damage;
+	if (this != &other){
+		_name = other._name;
+		_hit_point = other._hit_point;
+		_energy_point = other._energy_point;
+		_attack_damage = other._attack_damage;
+	}
 	return (*this);
 }
 

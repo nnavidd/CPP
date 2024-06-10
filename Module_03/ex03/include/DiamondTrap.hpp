@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 23:49:27 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/05/17 23:06:27 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/10 12:27:11 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,7 @@ Of course, the ClapTrap subobject of the DiamondTrap will be created once, and o
 once. Yes, there’s a trick.
 Again, add more tests to your program.*/
 
-class DiamondTrap: public ScavTrap, public FragTrap{
-// class DiamondTrap: public ClapTrap{
+class DiamondTrap: public ScavTrap, public FragTrap {
 	private:
 		std::string	_name;
 
@@ -53,6 +52,7 @@ class DiamondTrap: public ScavTrap, public FragTrap{
 		DiamondTrap( DiamondTrap const & );
 		DiamondTrap & operator=( DiamondTrap const & );
 		~DiamondTrap( void );
+		
 		void	whoAmI( void );
 		void	attack(std::string const & target);
 

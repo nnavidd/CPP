@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   DiamondTrap.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 00:06:38 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/05/19 10:27:21 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/10 12:59:58 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,15 @@ DiamondTrap::DiamondTrap(DiamondTrap const & other):ClapTrap(other), ScavTrap(ot
 
 DiamondTrap & DiamondTrap::operator=(DiamondTrap const & other){
 	std::cout << CYAN "DiamondTrap" RESET " assignment operator is called!" << std::endl;	
-	_name = other._name;
-	_hit_point = other._hit_point;
-	_energy_point = other._energy_point;
-	_attack_damage = other._attack_damage;
+	if (this != &other) {
+		ClapTrap::operator=(other);
+		ScavTrap::operator=(other);
+		FragTrap::operator=(other);
+		_name = other._name;
+		_hit_point = other._hit_point;
+		_energy_point = other._energy_point;
+		_attack_damage = other._attack_damage;
+	}
 	return (*this);
 }
 
@@ -50,7 +55,6 @@ void	DiamondTrap::attack(std::string const & target){
 		std::cout << CYAN "DiamondTrap <" GREEN << _name << RESET "> is already dead!!!" << std::endl;
 	else if (_energy_point == 0)
 		std::cout << CYAN "DiamondTrap " GREEN << _name << RESET " doesn't have enough enegery to attack!" << std::endl;
-
 }
 
 void	DiamondTrap::whoAmI( void ) {

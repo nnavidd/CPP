@@ -3,31 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 10:02:47 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/05/14 22:50:34 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/10 11:36:54 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ClapTrap.hpp"
 
-ClapTrap::ClapTrap( void ){std::cout << ORG "ClapTrap default construcor is clalled!" RESET << std::endl;}
+ClapTrap::ClapTrap( void ): _name(""), _hit_point(0), _energy_point(0), _attack_damage(0){
+	std::cout << ORG "ClapTrap default construcor is clalled!" RESET << std::endl;
+}
 ClapTrap::ClapTrap(std::string const name): _name(name), _hit_point(10), _energy_point(10), _attack_damage(0){
 	std::cout << ORG "ClapTrap " RESET << "name constructor is called!" RESET << std::endl;
 }
 
 ClapTrap::ClapTrap(ClapTrap const & other){
-	std::cout << ORG "ClapTrap copy constructor is called!" RESET << std::endl;
+	std::cout << ORG "ClapTrap" RESET " copy constructor is called!" RESET << std::endl;
 	*this = other;
 }
 
 ClapTrap & ClapTrap::operator=(ClapTrap const & other){
-	std::cout << ORG "ClapTrap copy assignment operator is called!" RESET << std::endl;
-	_name = other._name;
-	_hit_point = other._hit_point;
-	_energy_point = other._energy_point;
-	_attack_damage = other._attack_damage;
+	std::cout << ORG "ClapTrap" RESET " copy assignment operator is called!" RESET << std::endl;
+	if (this != &other){
+		_name = other._name;
+		_hit_point = other._hit_point;
+		_energy_point = other._energy_point;
+		_attack_damage = other._attack_damage;
+	}
 	return (*this);
 }
 
@@ -51,11 +55,14 @@ void	ClapTrap::takeDamage(unsigned int amount){
 	if (_hit_point == 0)
 		std::cout << ORG "ClapTrap " GREEN << _name << ORG " is already dead!" RESET << std::endl;
 	else if (amount < _hit_point){
-	std::cout << ORG "ClapTrap " GREEN << _name << ORG " is damaged and " << RED << amount << ORG " health point is lost!" RESET << std::endl;
-	_hit_point -= amount;
+		std::cout << ORG "ClapTrap " GREEN << _name << ORG " is damaged and " << RED << amount << ORG " health point is lost!" RESET << std::endl;
+		_hit_point -= amount;
+		return ;
 	}
-	else 
+	else {
+		std::cout << ORG "ClapTrap " GREEN << _name << ORG " is damaged " << RED << amount << ORG " point that was more than its health point, so is just dead!" RESET << std::endl;
 		_hit_point = 0;
+	}
 	return ;
 }
 

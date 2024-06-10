@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 10:03:49 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/05/15 11:47:18 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/10 12:20:09 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int main( void )
 	FragTrap	instance2( instance1 );
 	FragTrap	instance3 = instance2;
 
+	std::cout << std::endl;
+	std::cout << RED "acting on instance 3: " RESET << std::endl;
 	instance3.report();
 	instance3.attack("yyy");
 	instance3.report();
@@ -29,14 +31,19 @@ int main( void )
 	instance3.report();
 	instance3.highFivesGuys();
 	instance3.takeDamage(30);
-
-	std::cout << "instance 3 state: " << std::endl;
+	
+	std::cout << std::endl;
+	std::cout << RED "instance 3 state: " RESET << std::endl;
 	instance3.report();
-	std::cout << "instance 2 state: " << std::endl;
+	std::cout << std::endl;
+	std::cout << RED "instance 2 state: " RESET << std::endl;
 	instance2.report();
-	std::cout << "instance 1 state: " << std::endl;
+	std::cout << std::endl;
+	std::cout << RED "instance 1 state: " RESET << std::endl;
 	instance1.report();
-	std::cout << "instance 0 state: " << std::endl;
+	std::cout << std::endl;
+	std::cout << RED "instance 0 state: " RESET << std::endl;
 	instance.report();
+	std::cout << std::endl;
     return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 10:01:24 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/05/19 10:16:35 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/10 12:22:00 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ class ClapTrap{
 		virtual ~ClapTrap( void );
 
 		virtual void	attack(std::string const & target);
-		void	takeDamage(unsigned int amount);
-		void	beRepaired(unsigned int amount);
+		void			takeDamage(unsigned int amount);
+		void			beRepaired(unsigned int amount);
 		virtual void	report( void ) const;
 };
 

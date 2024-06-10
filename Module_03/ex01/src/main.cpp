@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 10:03:49 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/05/14 23:21:29 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/10 11:46:40 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int main( void )
     ScavTrap instance( "Ash" );
     ScavTrap instance2( instance );
 
-    instance2.report();
+    instance.report();
     instance2.report();
 	instance2.attack( "the air" );
     instance2.report();

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 18:19:56 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/05/14 23:19:49 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/10 11:54:34 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ScavTrap.hpp"
 
-ScavTrap::ScavTrap() {
+ScavTrap::ScavTrap(): ClapTrap() {
 	std::cout << "ScavTrap default constructor is called!" << std::endl;
 }
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
@@ -29,10 +29,12 @@ ScavTrap::ScavTrap(ScavTrap const & other): ClapTrap(other) {
 
 ScavTrap & ScavTrap::operator=(ScavTrap const & other) {
 	std::cout << "ScavTrap copy assignment is called!" << std::endl;
-	_name = other._name;
-	_hit_point = other._hit_point;
-	_energy_point = other._energy_point;
-	_attack_damage = other._attack_damage; // Fix typo here
+	if (this != & other) {
+		_name = other._name;
+		_hit_point = other._hit_point;
+		_energy_point = other._energy_point;
+		_attack_damage = other._attack_damage;
+	}
 	return (*this);
 }
 
@@ -54,5 +56,5 @@ void	ScavTrap::attack(std::string const & target){
 
 
 void ScavTrap::guardGate() {
-	std::cout << "ScavTrap " GREEN << _name << RESET " now in Gatekeeper mode" << std::endl; // Add meaningful action here
+	std::cout << "ScavTrap " GREEN << _name << RESET " now in Gatekeeper mode" << std::endl;
 }
