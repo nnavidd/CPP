@@ -6,15 +6,16 @@
 /*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 19:10:35 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/06/15 10:22:57 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/15 14:27:17 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
-# include "iostream"
-# include "string"
+# include <iostream>
+# include <string>
+# include <exception>
 
 # define BLUE		"\033[38;5;4m"
 # define MAGENTA	"\033[38;5;5m"
@@ -23,6 +24,8 @@
 # define ORG		"\033[38;5;214m"
 # define RED		"\033[38;5;196m"
 # define RESET		"\033[0m"
+
+class Form;
 
 class Bureaucrat{
 	private:
@@ -39,13 +42,15 @@ class Bureaucrat{
 		std::string	getName() const;
 		int			getRange() const;
 
+		void signForm(Form &) const;
+
 		class GradeTooHighException : public std::exception {
 			virtual const char* what() const throw() {
-				return (GREEN "grade is too high" RESET);}
+				return (GREEN "Brue Grade is too high" RESET);}
 		};
 		class GradeTooLowException : public std::exception {
 			virtual const char* what() const throw() {
-				return (GREEN "grade is too low" RESET);}
+				return (GREEN "Brue Grade is too low" RESET);}
 		};
 
 };
