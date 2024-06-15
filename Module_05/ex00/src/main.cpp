@@ -6,7 +6,7 @@
 /*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 01:05:57 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/06/15 00:44:55 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/15 16:48:57 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,22 @@
 		std::cout << instance4 << std::endl;
 	}
 	catch(std::exception& e) {
+		std::cout << e.what() << std::endl;
+	}
+	try {
+		Bureaucrat	instnce("eee", 2);
+		std::cout << instnce << std::endl;
+		instnce.decrementGrade();
+		std::cout << instnce << std::endl;
+	} catch (std::exception& e) {
+		std::cout << e.what() << std::endl;
+	}
+	try {
+		Bureaucrat	instnce("ddd", 1);
+		std::cout << instnce << std::endl;
+		instnce.incrementGrade();
+		std::cout << instnce << std::endl;
+	} catch (std::exception& e) {
 		std::cout << e.what() << std::endl;
 	}
 

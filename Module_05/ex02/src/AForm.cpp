@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/Form.hpp"
+#include "../include/AForm.hpp"
 #include "../include/Bureaucrat.hpp"
 
-Form::Form( void ) : _name ("Default"), _signed_at_construct(0), _sing_grade(0), _exec_grade(0) {}
+AForm::AForm( void ) : _name ("Default"), _signed_at_construct(0), _sing_grade(0), _exec_grade(0) {}
 
-Form::Form(std::string name, int sgrade, int egrade) : _name(name), 
+AForm::AForm(std::string name, int sgrade, int egrade) : _name(name), 
 			_signed_at_construct(0), _sing_grade(sgrade), _exec_grade(egrade)
 {
 	if (_sing_grade < 1 || _exec_grade < 1)
@@ -24,43 +24,51 @@ Form::Form(std::string name, int sgrade, int egrade) : _name(name),
 		throw GradeTooLowException();
 }
 
-Form::Form(Form const & other) : _name(other._name), 
+AForm::AForm(AForm const & other) : _name(other._name), 
 			_signed_at_construct(other._signed_at_construct),
 			_sing_grade(other._sing_grade),
 			_exec_grade(other._exec_grade) {}
 
-Form & Form::operator=(Form const & other) {
+AForm & AForm::operator=(AForm const & other) {
 	if(this != &other)
 		_signed_at_construct = other._signed_at_construct;
 	return (*this);
 }
 
-Form::~Form( void ) {}
+AForm::~AForm( void ) {}
 
-std::string Form::getName() const {
+std::string AForm::getName() const {
 	return (_name);
 }
 
-int Form::getSignGrade() const {
+int AForm::getSignGrade() const {
 	return (_sing_grade);
 }
 
-int Form::getExecGrade() const {
+int AForm::getExecGrade() const {
 	return (_exec_grade);
 }
 
-bool Form::getSignedAtConstruct() const {
+bool AForm::getSignedAtConstruct() const {
 	return (_signed_at_construct);
 }
 
-void Form::beSigned(Bureaucrat const & other) {
+void AForm::beSigned(Bureaucrat const & other) {
 	if (other.getGrade() <= this->_sing_grade)
 		_signed_at_construct = true;
 	else
 		throw GradeTooLowException();
 }
 
-std::ostream & operator<<(std::ostream & o, Form const & other) {
+bool	AForm::checkRequirements(Bureaucrat const & executor) const {
+	if (!_signed_at_construct)
+		throw(AForm::CheckIfSigned());
+	if (executor.getGrade() > _exec_grade)
+        throw AForm::GradeTooLowException();
+	return (true);
+}
+
+std::ostream & operator<<(std::ostream & o, AForm const & other) {
 	o <<GREEN "The form Name is: " MAGENTA << other.getName() << std::endl << GREEN "It's Signe status is:	" CYAN << 
 	(other.getSignedAtConstruct() ? "Yes" : "NO") << std::endl << GREEN "It's Signe Grade is:	" CYAN <<
 	other.getSignGrade() << std::endl << GREEN "Its Exec Grade is:	" CYAN << other.getExecGrade() << RESET << std::endl;

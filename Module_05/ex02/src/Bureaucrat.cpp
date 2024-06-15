@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../include/Bureaucrat.hpp"
-#include "../include/Form.hpp"
+#include "../include/AForm.hpp"
 
 Bureaucrat::Bureaucrat( void ) : _name("Default"), _grade(1) {}
 Bureaucrat::Bureaucrat(Bureaucrat const & other) : _name(other._name), _grade(other._grade) {}
@@ -52,7 +52,7 @@ void Bureaucrat::decrementGrade(void) {
 	_grade++;
 }
 
-void Bureaucrat::signForm(Form & other) const {
+void Bureaucrat::signForm(AForm & other) const {
 	// if (other.getSignedAtConstruct())
 	// 	std::cout << GREEN << this->getName() << RESET " Signed " MAGENTA << other.getName() << RESET << std::endl;
 	// else{
@@ -71,6 +71,16 @@ void Bureaucrat::signForm(Form & other) const {
 		this->getGrade() << RESET << std::endl;
 	}
 		
+}
+
+void Bureaucrat::executeForm(AForm const & other){
+	try{
+		other.execute(*this);
+		std::cout << MAGENTA << this->getName() << RESET " executed " CYAN << other.getName() << RESET << std::endl;
+	} catch(std::exception& e) {
+		std::cout << MAGENTA << this->getName() << RESET " failed to execute " CYAN << other.getName() << RESET " because:"<< std::endl;
+		std::cout << CYAN << e.what() << RESET << std::endl;
+	}
 }
 
 std::ostream & operator<<(std::ostream & o, Bureaucrat const & other) {

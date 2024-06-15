@@ -25,7 +25,7 @@
 # define RED		"\033[38;5;196m"
 # define RESET		"\033[0m"
 
-class Form;
+class AForm;
 
 class Bureaucrat{
 	private:
@@ -45,7 +45,8 @@ class Bureaucrat{
 		void incrementGrade(void);
 		void decrementGrade(void);
 
-		void signForm(Form &) const;
+		void	signForm(AForm &) const;
+		void	executeForm(AForm const & form);
 
 		class GradeTooHighException : public std::exception {
 			virtual const char* what() const throw() {
