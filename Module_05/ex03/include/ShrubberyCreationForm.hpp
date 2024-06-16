@@ -6,7 +6,7 @@
 /*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 17:36:14 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/06/16 09:46:05 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/15 23:14:33 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,16 @@ class ShrubberyCreationForm : public AForm {
 
 	public:
 
-		ShrubberyCreationForm( void );
+		ShrubberyCreationForm(void);
 		ShrubberyCreationForm(std::string target);
 		ShrubberyCreationForm(const ShrubberyCreationForm &other);
 		ShrubberyCreationForm &operator=(const ShrubberyCreationForm &other);
-		~ShrubberyCreationForm( void );
+		~ShrubberyCreationForm(void);
 		
 		void execute(const Bureaucrat &executor) const;
 
-		class FileOpenFailed : public std::exception {
-			virtual const char * what() const throw() {
+		class FileOpenFailed : public std::exception{
+			virtual const char * what() const throw(){
 				return ("This file couldn't open!");
 			}
 		};

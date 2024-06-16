@@ -1,43 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
+/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/15 17:36:14 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/06/16 09:46:05 by nnabaeei         ###   ########.fr       */
+/*   Created: 2024/06/15 17:34:39 by nnabaeei          #+#    #+#             */
+/*   Updated: 2024/06/15 17:35:52 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SHRUBBERYCREATIONFORM_HPP
-# define SHRUBBERYCREATIONFORM_HPP
+
+#ifndef ROBOTOMYREQUESTFORM_HPP
+# define ROBOTOMYREQUESTFORM_HPP
 
 # include <iostream>
 # include <string>
 # include <exception>
-# include <fstream>
 # include "./AForm.hpp"
 
-class ShrubberyCreationForm : public AForm {
+class RobotomyRequestForm : public AForm {
 	private:
 		std::string _target;
 
 	public:
 
-		ShrubberyCreationForm( void );
-		ShrubberyCreationForm(std::string target);
-		ShrubberyCreationForm(const ShrubberyCreationForm &other);
-		ShrubberyCreationForm &operator=(const ShrubberyCreationForm &other);
-		~ShrubberyCreationForm( void );
+		RobotomyRequestForm(void);
+		RobotomyRequestForm(std::string target);
+		RobotomyRequestForm(const RobotomyRequestForm &other);
+		RobotomyRequestForm &operator=(const RobotomyRequestForm &other);
+		~RobotomyRequestForm(void);
 		
 		void execute(const Bureaucrat &executor) const;
 
-		class FileOpenFailed : public std::exception {
-			virtual const char * what() const throw() {
-				return ("This file couldn't open!");
-			}
-		};
 };
 
 

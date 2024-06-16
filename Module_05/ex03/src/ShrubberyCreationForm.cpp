@@ -6,7 +6,7 @@
 /*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 17:56:22 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/06/16 09:48:42 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/16 09:17:22 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ ShrubberyCreationForm::~ShrubberyCreationForm(void) {}
 
 void ShrubberyCreationForm::execute(const Bureaucrat &executor) const {
 	if (checkRequirements(executor)) {
-		std::ofstream file((_target + "_shrubbery").c_str());
+		std::ofstream file((this->getName() + "_shrubbery").c_str());
+		std::cout << GREEN << _target << ORG " drew an Tree in a file inside the current folder!" RESET << std::endl;
+		// std::ofstream file(_target + "_shrubbery");
 		if (file.is_open() == false)
 			throw FileOpenFailed();
 		file 	<< "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW" << std::endl
@@ -73,7 +75,6 @@ void ShrubberyCreationForm::execute(const Bureaucrat &executor) const {
 				<< "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW" << std::endl
 				<< "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW" << std::endl;
 		file.close();
-		std::cout << GREEN << _target << ORG " drew an Tree in a file inside the current folder!" RESET << std::endl;
 	}
 
 }
