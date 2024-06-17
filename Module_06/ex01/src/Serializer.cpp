@@ -3,33 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   Serializer.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: nnavidd <nnavidd@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 19:36:19 by nnavidd           #+#    #+#             */
-/*   Updated: 2024/06/17 20:16:03 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/18 00:32:25 by nnavidd          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../include/Serializer.hpp"
 
-Serilizer::Serilizer( void ){}
+Serializer::Serializer( void ){}
 
-Serilizer::Serilizer(Serilizer const & other){
+Serializer::Serializer(Serializer const & other){
 	*this = other;
 }
 
-Serilizer & Serilizer::operator=(Serilizer const & other){
+Serializer & Serializer::operator=(Serializer const & other){
 	if(this != &other)
 		*this = other;
 	return (*this);
 }
 
-Serilizer::~Serilizer( void ){}
+Serializer::~Serializer( void ){}
 
-Data * Serilizer::deserialize(uintptr_t raw){
+Data * Serializer::deserialize(unsigned long raw){
     return (reinterpret_cast<Data *>(raw));
 }
 
-uintptr_t   Serilizer::serialize(Data * ptr){
-    return (reinterpret_cast<uintptr_t>(ptr));
+unsigned long   Serializer::serialize(Data * ptr){
+    return (reinterpret_cast<unsigned long>(ptr));
 }
