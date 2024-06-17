@@ -6,7 +6,7 @@
 /*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 19:01:28 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/06/16 23:47:01 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/17 14:08:43 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,11 @@
 # include <exception>
 # include <sstream>
 # include <limits>
+# include <climits>
 # include <iomanip>
 # include <cmath>
 # include <cstdio>
+# include <cstdlib>
 
 # define BLUE		"\033[38;5;4m"
 # define MAGENTA	"\033[38;5;5m"
@@ -33,6 +35,11 @@
 class ScalarConverter{
 	private:
 		
+		ScalarConverter( void );
+		ScalarConverter(const ScalarConverter &);
+		ScalarConverter &operator=(const ScalarConverter &);
+		~ScalarConverter( void );
+
 		static void detectType(const std::string &literal, bool &isChar, bool &isInt, bool &isFloat, bool &isDouble, char &c, int &i, float &f, double &d);
 		static void handleSpecialCases(const std::string &literal, bool &isFloat, bool &isDouble, float &f, double &d);
 		static void tryConvertToInt(const std::string &literal, bool &isInt, int &i);
@@ -54,12 +61,11 @@ class ScalarConverter{
 		static void printFloatFromDouble(double d);
 
 	public:
-		ScalarConverter(ScalarConverter const &);
-		ScalarConverter & operator=(ScalarConverter const &);
-		~ScalarConverter( void );
-
 		static void convert(std::string const & literal);
 
+		class worng : public std::exception{
+			virtual const char* what() const throw();
+		};
 };
 
 #endif

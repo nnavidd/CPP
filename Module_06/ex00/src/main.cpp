@@ -6,7 +6,7 @@
 /*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 19:17:47 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/06/16 19:18:10 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/17 14:34:19 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,14 @@
 
 int main(int argc, char *argv[]) {
     if (argc != 2) {
-        std::cerr << "Usage: " << argv[0] << " <literal>" << std::endl;
+        std::cerr << RED "Error: " ORG "Usage-> " << argv[0] << " <literal>" RESET << std::endl;
         return 1;
     }
-
-    ScalarConverter::convert(argv[1]);
+	try{
+		ScalarConverter::convert(argv[1]);
+	} catch(std::exception& worong){
+		std::cout << RED "Error: " RESET<< worong.what() << std::endl;
+	}
 
     return 0;
 }
