@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Serializer.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnavidd <nnavidd@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 18:38:21 by nnavidd           #+#    #+#             */
-/*   Updated: 2024/06/17 19:54:48 by nnavidd          ###   ########.fr       */
+/*   Updated: 2024/06/17 20:11:23 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ typedef struct data{
 
 class Serilizer {
     private:
-        Serilizer( void ) = delete;
-        Serilizer(Serilizer const &) = delete;
-        Serilizer & operator=(Serilizer const &) = delete;
-        ~Serilizer( void ) = delete;
+        Serilizer( void );
+        Serilizer(Serilizer const &);
+        Serilizer & operator=(Serilizer const &);
+        ~Serilizer( void );
         
     public:
     static uintptr_t   serialize(Data* ptr); 
