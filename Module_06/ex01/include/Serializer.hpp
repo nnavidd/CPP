@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Serializer.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnavidd <nnavidd@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 18:38:21 by nnavidd           #+#    #+#             */
-/*   Updated: 2024/06/18 00:42:21 by nnavidd          ###   ########.fr       */
+/*   Updated: 2024/06/18 01:59:03 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define RESET		"\033[0m"
 
 typedef struct data{
-    unsigned long	i;
+    int				i;
     std::string		str;
     float       	f;
     double      	d;
@@ -40,7 +40,7 @@ class Serializer {
         ~Serializer( void );
         
     public:
-    static unsigned long   serialize(Data* ptr); 
-    static Data    *   deserialize(unsigned long raw);
+		static uintptr_t   serialize(Data* ptr); 
+		static Data    *   deserialize(uintptr_t raw);
 };
 #endif

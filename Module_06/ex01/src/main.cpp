@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnavidd <nnavidd@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 19:42:47 by nnavidd           #+#    #+#             */
-/*   Updated: 2024/06/18 01:09:36 by nnavidd          ###   ########.fr       */
+/*   Updated: 2024/06/18 01:57:37 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int main(){
     Data            originalData;
     Data            *deserializedData;
-    unsigned long   raw;
+    uintptr_t   	raw;
 
     originalData.i = 4;
     originalData.str = "42 is an institute";
@@ -23,16 +23,16 @@ int main(){
     raw = Serializer::serialize(&originalData);
     deserializedData = Serializer::deserialize(raw);
    
-    std::cout << GREEN "raw              address:   " RESET << &raw << std::endl;
-    std::cout << GREEN "originalData     address:   " RESET << &originalData << std::endl;
-    std::cout << GREEN "deserializedData address:   " RESET << deserializedData << std::endl;
-    std::cout << "--------------------------------" << std::endl;
+    std::cout << GREEN "raw                address: " CYAN << &raw << RESET << std::endl;
+    std::cout << GREEN "originalData       address: " CYAN << &originalData << RESET << std::endl;
+    std::cout << GREEN "deserializedData   address: " CYAN << deserializedData << RESET << std::endl;
+    std::cout << RED "--------------------------------" RESET << std::endl;
    
-    std::cout << GREEN "originalData     unsigned long: " MAGENTA << originalData.i << RESET << std::endl;
-    std::cout << GREEN "originalData            string: " MAGENTA << originalData.str << RESET << std::endl << std::endl;
-    std::cout << GREEN "deserializedData unsigned long: " MAGENTA << deserializedData->i << RESET << std::endl;
-    std::cout << GREEN "deserializedData        string: " MAGENTA << deserializedData->str << RESET << std::endl; 
-    std::cout << "--------------------------------" << std::endl;
+    std::cout << GREEN "originalData     uintptr_t: " MAGENTA << originalData.i << RESET << std::endl;
+    std::cout << GREEN "originalData        string: " MAGENTA << originalData.str << RESET << std::endl << std::endl;
+    std::cout << GREEN "deserializedData uintptr_t: " MAGENTA << deserializedData->i << RESET << std::endl;
+    std::cout << GREEN "deserializedData    string: " MAGENTA << deserializedData->str << RESET << std::endl; 
+    std::cout << RED "--------------------------------" RESET << std::endl;
     // Create a Data object
     originalData.i = 42;
     originalData.str = "This is a test.";
@@ -45,9 +45,9 @@ int main(){
 
     // Verify that the deserialized pointer is the same as the original pointer
     if (deserializedData == &originalData) {
-        std::cout << GREEN "Deserialization successful!" << std::endl;
-        std::cout << GREEN "Data i  : " ORG << deserializedData->i << RESET << std::endl;
-        std::cout << GREEN "Data str: " ORG << deserializedData->str << RESET << std::endl;
+        std::cout << BLUE "Deserialization successful!" << std::endl;
+        std::cout << GREEN "deserializedData int variable: " ORG << deserializedData->i << RESET << std::endl;
+        std::cout << GREEN "deserializedData str variable: " ORG << deserializedData->str << RESET << std::endl;
     } else {
         std::cout << RED "Deserialization failed." RESET << std::endl;
     }
