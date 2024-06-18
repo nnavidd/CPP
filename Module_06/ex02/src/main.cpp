@@ -6,7 +6,7 @@
 /*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 12:04:57 by nnavidd           #+#    #+#             */
-/*   Updated: 2024/06/18 17:14:15 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/18 08:24:16 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ Base* generate() {
 
 void identify(Base* p) {
 	if (dynamic_cast<A*>(p))
-		std::cout << "A" << std::endl;
+		std::cout << ORG "The class'" GREEN "A" ORG "'is randomly generated!" RESET << std::endl;
 	else if (dynamic_cast<B*>(p))
-		std::cout << "B" << std::endl;
+		std::cout << ORG "The class'" GREEN "B" ORG "'is randomly generated!" RESET  << std::endl;
 	else if (dynamic_cast<C*>(p))
-		std::cout << "C" << std::endl;
+		std::cout << ORG "The class'" GREEN "C" ORG "'is randomly generated!" RESET  << std::endl;
 	else
-		std::cout << "Unknown type" << std::endl;
+		std::cout << RED "Unknown type" RESET << std::endl;
 }
 
 void identify(Base& p) {
@@ -59,20 +59,20 @@ void identify(Base& p) {
 	// } catch (std::bad_cast&) {}
 	try {
 		A& a = dynamic_cast<A&>(p);
-		std::cout << "A" << &a << std::endl;
-		return;
+		std::cout << ORG "Class'" GREEN "A" ORG"'address is:" CYAN << &a << RESET << std::endl;
+		return ;
 	} catch (std::bad_cast& bc) {}
 
 	try {
 		B& b = dynamic_cast<B&>(p);
-		std::cout << "B" << &b << std::endl;
-		return;
-	} catch (std::bad_cast& bc) {}
+		std::cout << ORG "Class'" GREEN "B" ORG"'address is:" CYAN << &b << RESET << std::endl;
+		return ;
+	} catch (...) {}
 
 	try {
 		C& c = dynamic_cast<C&>(p);
-		std::cout << "C" << &c << std::endl;
-		return;
+		std::cout << ORG "Class'" GREEN "C" ORG"'address is:" CYAN << &c << RESET << std::endl;
+		return ;
 	} catch (std::bad_cast& bc) {}
 
 	std::cout << "Unknown type" << std::endl;
