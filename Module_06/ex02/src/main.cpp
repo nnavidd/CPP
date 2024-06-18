@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnavidd <nnavidd@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 12:04:57 by nnavidd           #+#    #+#             */
-/*   Updated: 2024/06/18 12:19:59 by nnavidd          ###   ########.fr       */
+/*   Updated: 2024/06/18 17:14:15 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,29 +18,31 @@ Base* generate() {
 
 	switch (randomValue) {
 		case 0:
-			return new A();
+			return (new A());
 		case 1:
-			return new B();
+			return (new B());
 		case 2:
-			return new C();
+			return (new C());
 		default:
-			return NULL; // This should never be reached
+			return (NULL);
 	}
 }
 
 void identify(Base* p) {
-	if (dynamic_cast<A*>(p)) {
+	if (dynamic_cast<A*>(p))
 		std::cout << "A" << std::endl;
-	} else if (dynamic_cast<B*>(p)) {
+	else if (dynamic_cast<B*>(p))
 		std::cout << "B" << std::endl;
-	} else if (dynamic_cast<C*>(p)) {
+	else if (dynamic_cast<C*>(p))
 		std::cout << "C" << std::endl;
-	} else {
+	else
 		std::cout << "Unknown type" << std::endl;
-	}
 }
 
 void identify(Base& p) {
+
+	/* *******NOTICE: the (std::bad_cast&) doesn't compile with c++98 flag in linux,
+	therefore in case of need to be run on linux it should turns to catch (...) */
 	// try {
 	//     (void)dynamic_cast<A&>(p);
 	//     std::cout << "A" << std::endl;
@@ -59,19 +61,19 @@ void identify(Base& p) {
 		A& a = dynamic_cast<A&>(p);
 		std::cout << "A" << &a << std::endl;
 		return;
-	} catch (...) {}
+	} catch (std::bad_cast& bc) {}
 
 	try {
 		B& b = dynamic_cast<B&>(p);
 		std::cout << "B" << &b << std::endl;
 		return;
-	} catch (...) {}
+	} catch (std::bad_cast& bc) {}
 
 	try {
 		C& c = dynamic_cast<C&>(p);
 		std::cout << "C" << &c << std::endl;
 		return;
-	} catch (...) {}
+	} catch (std::bad_cast& bc) {}
 
 	std::cout << "Unknown type" << std::endl;
 }
