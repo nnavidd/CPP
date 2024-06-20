@@ -6,7 +6,7 @@
 /*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 19:42:47 by nnavidd           #+#    #+#             */
-/*   Updated: 2024/06/18 01:57:37 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/18 17:14:21 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int main(){
     std::cout << GREEN "originalData        string: " MAGENTA << originalData.str << RESET << std::endl << std::endl;
     std::cout << GREEN "deserializedData uintptr_t: " MAGENTA << deserializedData->i << RESET << std::endl;
     std::cout << GREEN "deserializedData    string: " MAGENTA << deserializedData->str << RESET << std::endl; 
+	
     std::cout << RED "--------------------------------" RESET << std::endl;
     // Create a Data object
     originalData.i = 42;
