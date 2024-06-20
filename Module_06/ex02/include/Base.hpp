@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Base.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnavidd <nnavidd@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 11:38:43 by nnavidd           #+#    #+#             */
-/*   Updated: 2024/06/18 12:20:09 by nnavidd          ###   ########.fr       */
+/*   Updated: 2024/06/18 08:15:55 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,13 @@
 # include <cstdlib> // For rand()
 # include <ctime> // For time()
 
-
+# define BLUE		"\033[38;5;4m"
+# define MAGENTA	"\033[38;5;5m"
+# define CYAN		"\033[38;5;44m"
+# define GREEN		"\033[38;5;2m"
+# define ORG		"\033[38;5;214m"
+# define RED		"\033[38;5;196m"
+# define RESET		"\033[0m"
 
 class Base{
 	private:
