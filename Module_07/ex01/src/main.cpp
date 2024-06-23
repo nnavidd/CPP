@@ -3,48 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnavidd <nnavidd@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 13:32:18 by nnavidd           #+#    #+#             */
-/*   Updated: 2024/06/23 13:51:35 by nnavidd          ###   ########.fr       */
+/*   Updated: 2024/06/23 19:25:42 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/iter.hpp"
 
-// Example function to be called on each element
-template <typename T>
-void printElement(T const & element) {
-    std::cout << element << " ";
-}
+int main () {
+	std::cout << RED "----------int arr----------" RESET << std::endl;
+	{
+		int arr[] = {1, 2, 3, 4, 5};
 
-// Another example function to increment each element
-template <typename T>
-void incrementElement(T& element) {
-    ++element;
-}
+		std::size_t size = sizeof(arr) / sizeof(arr[0]);
+		printMemberArray(arr, size, "Befor");
+		// calling incFunc function
+		iter(arr, size, incFunc<int>);
+		printMemberArray(arr, size, "After");
+	}
+	std::cout << RED "----------char arr----------" RESET << std::endl;
+	{
+		char arr[] = {'a', 'b', 'c', 'd', 'e'};
+		
+		std::size_t size = sizeof(arr) / sizeof(arr[0]);
+		printMemberArray(arr, size, "Befor");
+		// calling incFunc function
+		iter(arr, size, incFunc<char>);
+		printMemberArray(arr, size, "Befor");
+	}
+	std::cout << RED "----------string arr----------" RESET << std::endl;
+	{
+		std::string arr[] = {"Hello", "world!,", "today", "is a", "good day!"};
+		
+		std::size_t size = sizeof(arr) / sizeof(arr[0]);
+		// calling incFunc function
+        iter(arr, size, printStringArray<std::string>);
+		std::cout << std::endl;
+	}
 
-int main() {
-    int intArray[] = {1, 2, 3, 4, 5};
-    std::size_t intArrayLength = sizeof(intArray) / sizeof(intArray[0]);
-
-    std::cout << "Original int array: ";
-    iter(intArray, intArrayLength, printElement<int>);
-    std::cout << std::endl;
-
-    std::cout << "Incrementing elements in int array..." << std::endl;
-    iter(intArray, intArrayLength, incrementElement<int>);
-
-    std::cout << "Modified int array: ";
-    iter(intArray, intArrayLength, printElement<int>);
-    std::cout << std::endl;
-
-    std::string strArray[] = {"hello", "world", "test"};
-    std::size_t strArrayLength = sizeof(strArray) / sizeof(strArray[0]);
-
-    std::cout << "Original string array: ";
-    iter(strArray, strArrayLength, printElement<std::string>);
-    std::cout << std::endl;
-
-    return 0;
+	return (0);
 }
