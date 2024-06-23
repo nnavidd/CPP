@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+         #
+#    By: nnavidd <nnavidd@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/27 09:27:14 by nnabaeei          #+#    #+#              #
-#    Updated: 2024/06/23 17:21:42 by nnabaeei         ###   ########.fr        #
+#    Updated: 2024/06/24 00:50:54 by nnavidd          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ OBJ_DIR := obj
 CPP_FILES := $(wildcard $(SRC_DIR)/*.cpp)
 
 # Find all .hpp files in the INCLUDE directory
-HEADERS := $(wildcard $(INCLUDE_DIR)/*.hpp)
+HEADERS := $(wildcard $(INCLUDE_DIR)/*.hpp) $(wildcard $(INCLUDE_DIR)/*.tpp)
 
 # Generate object file names
 OBJ_FILES := $(addprefix $(OBJ_DIR)/,$(notdir $(CPP_FILES:.cpp=.o)))
