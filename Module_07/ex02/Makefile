@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nnavidd <nnavidd@student.42.fr>            +#+  +:+       +#+         #
+#    By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/27 09:27:14 by nnabaeei          #+#    #+#              #
-#    Updated: 2024/06/18 12:08:51 by nnavidd          ###   ########.fr        #
+#    Updated: 2024/06/23 17:21:42 by nnabaeei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME     := scalar
+NAME     := array
 CXX      := g++
 CXXFLAGS := -Wall -Wextra -Werror -std=c++98 -g
 CXXFLAGS += -fsanitize=address -Wshadow -Wno-shadow
