@@ -6,11 +6,11 @@
 #    By: nnavidd <nnavidd@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/27 09:27:14 by nnabaeei          #+#    #+#              #
-#    Updated: 2024/06/18 12:08:51 by nnavidd          ###   ########.fr        #
+#    Updated: 2024/06/23 12:43:42 by nnavidd          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME     := scalar
+NAME     := template
 CXX      := g++
 CXXFLAGS := -Wall -Wextra -Werror -std=c++98 -g
 CXXFLAGS += -fsanitize=address -Wshadow -Wno-shadow
