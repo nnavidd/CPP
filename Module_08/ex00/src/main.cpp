@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnavidd <nnavidd@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 18:56:36 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/06/30 01:29:33 by nnavidd          ###   ########.fr       */
+/*   Updated: 2024/06/30 13:24:31 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int main() {
 			li.push_back(i * 10);
 
 		try {
-			show_container(li);
+			showContainer(li);
 			std::list<int>::iterator li_check = easyfind(li, 20);
 			std::cout << GREEN "The value " ORG"20" GREEN " position in the " CYAN "LIST" GREEN" container is: " CYAN
 			<< std::distance(li.begin(), li_check) << RESET << std::endl;
@@ -44,7 +44,7 @@ int main() {
 			ve.push_back(i * 2);
 
 		try {
-			show_container(ve);
+			showContainer(ve);
 			std::vector<int>::iterator ve_check = easyfind(ve, 6);
 			std::cout << GREEN "The value " ORG"6" GREEN " position in the " CYAN "VECTOR" GREEN" container is: " CYAN
 			<< std::distance(ve.begin(), ve_check) << RESET << std::endl;
@@ -65,7 +65,7 @@ int main() {
 		std::vector<int> vec(arr, arr + sizeof(arr) / sizeof(arr[0]));
 	
 		try {
-			show_container(vec);
+			showContainer(vec);
 			std::vector<int>::iterator ve_check = easyfind(vec, 55);
 			std::cout << GREEN "The value " ORG"55" GREEN " position in the " CYAN "VECTOR (created of an Array)" GREEN" container is: " CYAN
 			<< std::distance(vec.begin(), ve_check) << RESET << std::endl;

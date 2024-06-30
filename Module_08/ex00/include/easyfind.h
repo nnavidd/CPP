@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   easyfind.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnavidd <nnavidd@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 18:46:47 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/06/30 01:17:20 by nnavidd          ###   ########.fr       */
+/*   Updated: 2024/06/30 14:43:14 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,17 @@
 # include <algorithm>
 
 template <typename T>
-void show_container(T &container) {
+void showContainer(T &container) {
 	typename T::iterator itr = container.begin();
-	std::cout << "Container: { ";
+	std::cout << "Container elements: {";
 	for (;itr != container.end(); itr++) {
 		std::cout << ORG << *itr << RESET;
 		typename T::iterator nextitr = itr;
 		++nextitr;
 		if (nextitr != container.end())
-			std::cout << " , ";
+			std::cout << ", ";
 	}
-	std::cout << " }" << std::endl;
+	std::cout << "}" << std::endl;
 }
 
 class Error: public std::exception {

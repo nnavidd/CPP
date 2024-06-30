@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnavidd <nnavidd@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 01:49:00 by nnavidd           #+#    #+#             */
-/*   Updated: 2024/06/30 12:12:06 by nnavidd          ###   ########.fr       */
+/*   Updated: 2024/06/30 14:01:58 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # include <iterator>
 # include <limits>
 # include <time.h>
+# include <cstdio>
 # include <stdlib.h>
 
 class Span {
@@ -62,7 +63,8 @@ class Span {
 		// Size function
 		unsigned int size() const;
 
-		void showContainerElements( int begin = 0, int end = 0 ) const;
+		void showContainerElements( int begin = std::numeric_limits<int>::min(), 
+					int end = std::numeric_limits<int>::min() ) const;
 
 };
 
