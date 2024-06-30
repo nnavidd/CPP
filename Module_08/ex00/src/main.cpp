@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: nnavidd <nnavidd@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 18:56:36 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/06/30 13:24:31 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/06/30 23:00:44 by nnavidd          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int main() {
 	{
-		std::cout << "----- Passing " CYAN "List" RESET" container to the funciton -----" RESET<< std::endl;
+		std::cout << MAGENTA "----- Passing " CYAN "List" MAGENTA" container to the funciton -----" RESET<< std::endl;
 		std::list<int>	li;
 	
 		for (int i = 0; i < 5; i++)
@@ -37,7 +37,7 @@ int main() {
 	}
 
 	{
-		std::cout << "\n----- Passing " CYAN "VECTOR" RESET" container to the funciton -----" << std::endl;
+		std::cout << MAGENTA "\n----- Passing " CYAN "VECTOR" MAGENTA " container to the funciton -----" RESET<< std::endl;
 		std::vector<int>	ve;
 	
 		for (int i = 0; i < 7; i++)
@@ -60,7 +60,7 @@ int main() {
 	}
 
 	{
-		std::cout << "\n----- Passing an " CYAN "Array" RESET" container to the funciton -----" << std::endl;
+		std::cout << MAGENTA "\n----- Passing an " CYAN "Array" MAGENTA" container to the funciton -----" RESET<< std::endl;
 		int	arr[] = {11, 22, 33, 44, 55};
 		std::vector<int> vec(arr, arr + sizeof(arr) / sizeof(arr[0]));
 	
