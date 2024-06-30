@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nnavidd <nnavidd@student.42.fr>            +#+  +:+       +#+         #
+#    By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/27 09:27:14 by nnabaeei          #+#    #+#              #
-#    Updated: 2024/06/24 00:50:54 by nnavidd          ###   ########.fr        #
+#    Updated: 2024/06/30 15:25:33 by nnabaeei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME     := array
+NAME     := mutantstack
 CXX      := g++
 CXXFLAGS := -Wall -Wextra -Werror -std=c++98 -g
 CXXFLAGS += -fsanitize=address -Wshadow -Wno-shadow
