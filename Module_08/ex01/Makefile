@@ -6,11 +6,11 @@
 #    By: nnavidd <nnavidd@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/27 09:27:14 by nnabaeei          #+#    #+#              #
-#    Updated: 2024/06/24 00:50:54 by nnavidd          ###   ########.fr        #
+#    Updated: 2024/06/30 01:52:00 by nnavidd          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME     := array
+NAME     := span
 CXX      := g++
 CXXFLAGS := -Wall -Wextra -Werror -std=c++98 -g
 CXXFLAGS += -fsanitize=address -Wshadow -Wno-shadow
