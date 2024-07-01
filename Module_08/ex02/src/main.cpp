@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnavidd <nnavidd@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 15:22:31 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/07/01 00:27:52 by nnavidd          ###   ########.fr       */
+/*   Updated: 2024/07/01 12:20:29 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int main() {
 	mstack.push(17);
 	mstack.showContainerElements();
 	
-	std::cout << MAGENTA "Showing the top element of stack: " CYAN;
+	std::cout << MAGENTA "Showing the top element of the stack: " CYAN;
 	std::cout << mstack.top() << RESET << std::endl;
 	
 	// deleting the last element of the stack with the pop command
@@ -28,7 +28,7 @@ int main() {
 	
 	/* sinc the MutantStack is inheritated of the std::stack, therefor
 	   the size function of that container is applicable for this container as well */
-	std::cout << MAGENTA "The size of Containter: " CYAN << mstack.size() << RESET << std::endl;
+	std::cout << MAGENTA "The size of the Containter: " CYAN << mstack.size() << RESET << std::endl;
 	
 	/*Adding the element to the MutantStack container with the push command*/
 	mstack.push(3);
@@ -46,7 +46,7 @@ int main() {
 	++it;
 	--it;
 	
-	std::cout << ORG "Creating an iterator to expose the elements of MutantStack container: " RESET << std::endl;
+	std::cout << ORG "Creating an iterator to expose the elements of the MutantStack container: " RESET << std::endl;
 	// Go through the container to expose its elements
 	while (it != ite) {
 		std::cout << *it << std::endl;
@@ -57,7 +57,7 @@ int main() {
 	std::stack<int> s(mstack);
 	std::cout << GREEN "The top of a std::stack instance is: " CYAN << s.top() << RESET << std::endl;
 	s.push(11);
-	std::cout << GREEN "The top of a std::stack instance after call push is: " CYAN << s.top() << RESET << std::endl;
+	std::cout << GREEN "The top of a std::stack instance after calling push is: " CYAN << s.top() << RESET << std::endl;
 	
 	return 0;
 }
