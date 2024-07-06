@@ -6,7 +6,7 @@
 /*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 13:47:47 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/07/06 13:54:47 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/07/07 00:14:26 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,22 +35,9 @@ bool isValidValue(const std::string& valueStr) {
     return value >= 0 && value <= 1000;
 }
 
-int main(int argc, char* argv[]) {
-    if (argc != 2) {
-        std::cerr << "Usage: " << argv[0] << " <input file>" << std::endl;
-        return 1;
-    }
-
-    std::string inputFilePath = argv[1];
-    std::ifstream inputFile(inputFilePath.c_str());
-    if (!inputFile.is_open()) {
-        std::cerr << "Error: could not open file." << std::endl;
-        return 1;
-	std::cout << "hi\n";
-    }
-
+bool	runCalculation(std::ifstream & inputFile){
     try {
-        BTC btc("btc_database.csv");
+        BTC btc("data.csv");
         std::string line;
         while (std::getline(inputFile, line)) {
             std::istringstream ss(line);
@@ -84,4 +71,30 @@ int main(int argc, char* argv[]) {
     }
 
     return 0;
+}
+
+bool	checkInput(int ac, char **av, std::ifstream & inputFile){
+    if (ac != 2) {
+        std::cerr << "Usage: " << av[0] << " <input file>" << std::endl;
+        return 1;
+    }
+
+    std::string inputFilePath = av[1];
+    inputFile.open(inputFilePath.c_str());
+    if (!inputFile.is_open()) {
+        std::cerr << "Error: could not open file." << std::endl;
+        return 1;
+    }
+	return (0);
+}
+
+int main(int argc, char* argv[]) {
+	std::ifstream	inputFile;
+
+	if (!checkInput(argc, argv, inputFile)) {
+		if (runCalculation(inputFile))
+			return (EXIT_FAILURE);
+	}
+	return (EXIT_SUCCESS);
+
 }
