@@ -6,11 +6,11 @@
 #    By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/27 09:27:14 by nnabaeei          #+#    #+#              #
-#    Updated: 2024/07/06 13:42:14 by nnabaeei         ###   ########.fr        #
+#    Updated: 2024/07/06 18:59:57 by nnabaeei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME     := bitcoinexchange
+NAME     := bts
 CXX      := g++
 CXXFLAGS := -Wall -Wextra -Werror -std=c++98 -g
 CXXFLAGS += -fsanitize=address -Wshadow -Wno-shadow
