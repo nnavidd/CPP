@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: nnavidd <nnavidd@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 13:43:12 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/07/06 20:36:43 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/07/07 11:09:31 by nnavidd          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,29 +37,29 @@ class BTC {
 		std::map<std::string, float> btcRates;
 
 		// Private method to load the database from a file
-		bool loadDatabase(const std::string& dbFilePath);
+		bool loadDatabase( std::string const & dbFilePath );
 
 		// Private method to find the closest date in the map
-		std::string findClosestDate(const std::string& date) const;
+		std::string findClosestDate( std::string const & date ) const;
 	public:
 		// Default constructor
 		BTC();
 
 		// Constructor with file path
-		BTC(const std::string& dbFilePath);
+		BTC( std::string const & dbFilePath );
 
 		// Copy constructor
-		BTC(const BTC& other);
+		BTC( BTC const & other );
 
 		// Copy assignment operator
-		BTC& operator=(const BTC& other);
+		BTC & operator=( BTC const & other );
 
 		// Destructor
 		~BTC();
 
 		// Method to get the rate for a specific date
-		float getRate(const std::string& date) const;
+		float getRate( std::string const & date ) const;
 };
 
-#endif // BTC_HPP
+#endif
 
