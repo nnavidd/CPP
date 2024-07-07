@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnavidd <nnavidd@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 13:46:50 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/07/07 11:15:38 by nnavidd          ###   ########.fr       */
+/*   Updated: 2024/07/07 17:04:40 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,10 @@ bool BTC::loadDatabase( std::string const & dbFilePath ) {
 // Private method to find the closest date in the map
 std::string BTC::findClosestDate( std::string const & date ) const {
 	std::map<std::string, float>::const_iterator it = btcRates.lower_bound(date);
-	if (it == btcRates.begin() || (it != btcRates.end() && it->first != date)) {
+	if (it == btcRates.begin())
+		return (0);
+	// if (it != btcRates.end() && it->first != date) {
+	if (it->first != date) {
 		--it;
 	}
 	return (it->first);
