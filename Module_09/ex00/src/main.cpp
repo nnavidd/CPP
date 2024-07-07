@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnavidd <nnavidd@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 13:47:47 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/07/07 11:31:18 by nnavidd          ###   ########.fr       */
+/*   Updated: 2024/07/07 17:11:17 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,28 @@ bool isValidDate(std::string const & date) {
 	return (true);
 }
 
-bool isValidValue(std::string const & valueStr) {
-	float value = atof(valueStr.c_str());
 
-	if (value < 0)
+/*iss.eof(): Checks if the end of the stream has been reached (no trailing characters).
+!iss.fail(): Checks if the conversion failed (e.g., due to invalid format).*/
+bool isValidValue(std::string const & valueStr) {
+	float				value;
+	std::istringstream	iss(valueStr);
+
+	iss >> value;
+    if (!(iss.eof() && !iss.fail())) {
+		std::cerr << RED "Error: " ORG "value not a number => " RESET << valueStr << std::endl;
+		return (false);
+	}
+	value = atof(valueStr.c_str());
+	// float value = atof(valueStr.c_str());
+	if (value < 0) {
 		std::cerr << RED "Error: " ORG "not a positive number." RESET << std::endl;
-	else if (value > 1000)
+		return (false);
+	}
+	else if (value > 1000) {
 		std::cerr << RED "Error: " ORG "a too large number." RESET << std::endl;
-	
+		return (false);
+	}
 	return (value >= 0 && value <= 1000);
 }
 
@@ -86,6 +100,8 @@ bool readInputFile(std::ifstream & inputFile) {
 		BTC btc("data.csv");
 		std::string line;
 		std::getline(inputFile, line); //read the first line of input to ignore it
+		if (line != "date | value")
+        	throw std::runtime_error( RED "Error: " ORG "invalid input file header." RESET);
 		while (std::getline(inputFile, line)) {
 			std::istringstream ss(line);
 			std::string date, valueStr;
