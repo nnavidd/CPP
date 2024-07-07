@@ -6,7 +6,7 @@
 /*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 13:47:47 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/07/07 17:11:17 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/07/07 17:58:41 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ bool readInputFile(std::ifstream & inputFile) {
 	try {
 		BTC btc("data.csv");
 		std::string line;
-		std::getline(inputFile, line); //read the first line of input to ignore it
+		std::getline(inputFile, line); //read the first line of input to check the header
 		if (line != "date | value")
         	throw std::runtime_error( RED "Error: " ORG "invalid input file header." RESET);
 		while (std::getline(inputFile, line)) {
