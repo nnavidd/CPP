@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 22:32:42 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/06/15 23:36:07 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/11/24 19:10:48 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Bureaucrat::Bureaucrat( void ) : _name("Default"), _grade(1) {}
 Bureaucrat::Bureaucrat(Bureaucrat const & other) : _name(other._name), _grade(other._grade) {}
-Bureaucrat::Bureaucrat(std::string name, int range) : _name(name), _grade(range) {
+Bureaucrat::Bureaucrat(std::string const & name, int const & range) : _name(name), _grade(range) {
 	if (range < 1)
 		throw GradeTooHighException();
 	else if (range > 150)
