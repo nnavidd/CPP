@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+         #
+#    By: nnavidd <nnavidd@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/27 09:27:14 by nnabaeei          #+#    #+#              #
-#    Updated: 2024/07/06 18:59:57 by nnabaeei         ###   ########.fr        #
+#    Updated: 2025/01/13 22:53:19 by nnavidd          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,11 +54,3 @@ GREEN	= "\033[38;5;2m"
 ORG		= "\033[38;5;214m"
 RED		= "\033[38;5;196m"
 RESET	= "\033[0m"
-
-# define BLUE		"\033[38;5;4m"
-# define MAGENTA	"\033[38;5;5m"
-# define CYAN		"\033[38;5;44m"
-# define GREEN		"\033[38;5;2m"
-# define ORG		"\033[38;5;214m"
-# define RED		"\033[38;5;196m"
-# define RESET		"\033[0m"

@@ -6,7 +6,7 @@
 /*   By: nnavidd <nnavidd@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 13:43:12 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/07/07 11:09:31 by nnavidd          ###   ########.fr       */
+/*   Updated: 2025/01/14 09:11:55 by nnavidd          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@
 #include <stdexcept>
 #include <cstdlib>
 
+// it has a constructor that takes a file path as an argument,
+// and the exchange rates loaded from the file in a map
 class BTC {
 	private:
 		std::map<std::string, float> btcRates;
