@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+         #
+#    By: nnavidd <nnavidd@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/27 09:27:14 by nnabaeei          #+#    #+#              #
-#    Updated: 2024/06/30 15:25:33 by nnabaeei         ###   ########.fr        #
+#    Updated: 2025/01/14 12:41:51 by nnavidd          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME     := mutantstack
-CXX      := g++
+NAME     := PmergeMe
+CXX      := c++
 CXXFLAGS := -Wall -Wextra -Werror -std=c++98 -g
 CXXFLAGS += -fsanitize=address -Wshadow -Wno-shadow
 
@@ -54,11 +54,3 @@ GREEN	= "\033[38;5;2m"
 ORG		= "\033[38;5;214m"
 RED		= "\033[38;5;196m"
 RESET	= "\033[0m"
-
-# define BLUE		"\033[38;5;4m"
-# define MAGENTA	"\033[38;5;5m"
-# define CYAN		"\033[38;5;44m"
-# define GREEN		"\033[38;5;2m"
-# define ORG		"\033[38;5;214m"
-# define RED		"\033[38;5;196m"
-# define RESET		"\033[0m"
