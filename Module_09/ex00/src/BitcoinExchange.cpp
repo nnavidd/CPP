@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: nnavidd <nnavidd@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 13:46:50 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/07/07 17:04:40 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2025/01/14 09:00:05 by nnavidd          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,18 @@
 
 BTC::BTC() {}
 
+// Constructor with file path
 BTC::BTC( std::string const & dbFilePath ) {
 	if (!loadDatabase(dbFilePath)) {
 		throw std::runtime_error( RED "Error: " ORG "could not open file." RESET);
 	}
 }
 
+
+//Copy constructor
 BTC::BTC( BTC const & other ) : btcRates(other.btcRates) {}
 
+//Copy assignment oprator
 BTC & BTC::operator=( BTC const & other) {
 	if (this != &other) {
 		btcRates = other.btcRates;
@@ -29,6 +33,7 @@ BTC & BTC::operator=( BTC const & other) {
 	return (*this);
 }
 
+//Deconstructor
 BTC::~BTC() {}
 
 // Private method to load the database from a file
