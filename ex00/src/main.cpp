@@ -6,7 +6,7 @@
 /*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 13:47:47 by nnabaeei          #+#    #+#             */
-/*   Updated: 2025/04/26 10:22:19 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2025/04/27 11:30:33 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 /*iss.eof(): Checks if the end of the stream has been reached (no trailing characters).
 !iss.fail(): Checks if the conversion failed (e.g., due to invalid format).*/
+// this function checks if the value is a positive number
 bool isValidValue(std::string const & valueStr) {
 	float				value;
 	std::istringstream	iss(valueStr);
@@ -24,9 +25,8 @@ bool isValidValue(std::string const & valueStr) {
 		return (false);
 	}
 	value = atof(valueStr.c_str());
-	// float value = atof(valueStr.c_str());
 	if (value < 0) {
-		std::cerr << RED "Error: " ORG "not a positive number." RESET << std::endl;
+		std::cerr << RED "Error: " ORG "not a positive value number." RESET << std::endl;
 		return (false);
 	}
 	else if (value > 1000) {
@@ -35,6 +35,31 @@ bool isValidValue(std::string const & valueStr) {
 	}
 	return (value >= 0 && value <= 1000);
 }
+
+// this function checks if the date is in the format YYYY-MM-DD
+bool isValidDate(std::string const & date) {
+	// Check if the date is in the format YYYY-MM-DD
+	if (date.size() != 10 || date[4] != '-' || date[7] != '-') {
+		std::cerr << RED "Error: " ORG "bad date structure => " RESET << date << std::endl;
+		return (false);
+	}
+
+	std::string yearStr = date.substr(0, 4);
+	std::string monthStr = date.substr(5, 2);
+	std::string dayStr = date.substr(8, 2);
+
+	int year = atoi(yearStr.c_str());
+	int month = atoi(monthStr.c_str());
+	int day = atoi(dayStr.c_str());
+
+	if (year < 2000 || year > 9999 || month < 1 ||
+		 month > 12 || day < 1 || day > 31) {
+		std::cerr << RED "Error: " ORG "wrong date => " RESET << date << std::endl;
+		return (false);
+	}
+	return (true);
+}
+
 
 bool isValidDate(std::string const & date) {
 	// Check if the date is in the format YYYY-MM-DD
@@ -59,6 +84,7 @@ bool isValidDate(std::string const & date) {
 	return (true);
 }
 
+// this function checks if the input line has the correct structure
 bool isValidStructure(std::istringstream & ss, std::string & date, std::string & valueStr) {
 	if (ss.str().find('|') == 11) {
 		if (std::getline(ss, date, '|') && std::getline(ss, valueStr)) {
@@ -71,6 +97,7 @@ bool isValidStructure(std::istringstream & ss, std::string & date, std::string &
 	return (false);
 }
 
+// this function checks if the date and value are valid
 bool fetchDateValue(std::istringstream & ss, std::string & date, std::string & valueStr) {
 	if (!isValidStructure(ss, date, valueStr))
 		return (false);
@@ -81,6 +108,7 @@ bool fetchDateValue(std::istringstream & ss, std::string & date, std::string & v
 	return (true);
 }
 
+// this function calculates the result
 void runCalculation(BTC const & btc, std::string const & date, std::string const & valueStr) {
 	float value;
 	float rate;
@@ -94,6 +122,7 @@ void runCalculation(BTC const & btc, std::string const & date, std::string const
 			<< ORG " = " CYAN << result << RESET << std::endl;
 }	
 
+// this function reads the input file
 bool readInputFile(std::ifstream & inputFile) {
 	try {
 		BTC btc("data.csv");
@@ -116,6 +145,7 @@ bool readInputFile(std::ifstream & inputFile) {
 	return (true);
 }
 
+// this function checks the input
 bool checkInput(int ac, char **av, std::ifstream & inputFile) {
 	if (ac != 2) {
 		std::cerr << GREEN "Usage: " ORG << av[0] << MAGENTA " <input file>" RESET << std::endl;
