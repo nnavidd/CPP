@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 19:10:35 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/06/15 23:36:07 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2024/11/24 19:10:40 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ class Bureaucrat{
 
 	public:
 		Bureaucrat( void );
-		Bureaucrat(std::string name, int range);
+		Bureaucrat(std::string const & name, int const & range);
 		Bureaucrat(Bureaucrat const &);
 		Bureaucrat & operator=(Bureaucrat const &);
 		~Bureaucrat( void );
