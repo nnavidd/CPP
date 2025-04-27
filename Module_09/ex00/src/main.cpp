@@ -6,35 +6,11 @@
 /*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 13:47:47 by nnabaeei          #+#    #+#             */
-/*   Updated: 2024/07/07 17:58:41 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2025/04/26 10:22:19 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/BitcoinExchange.hpp"
-
-bool isValidDate(std::string const & date) {
-	// Check if the date is in the format YYYY-MM-DD
-	if (date.size() != 10 || date[4] != '-' || date[7] != '-') {
-		std::cerr << RED "Error: " ORG "bad date structure => " RESET << date << std::endl;
-		return (false);
-	}
-
-	std::string yearStr = date.substr(0, 4);
-	std::string monthStr = date.substr(5, 2);
-	std::string dayStr = date.substr(8, 2);
-
-	int year = atoi(yearStr.c_str());
-	int month = atoi(monthStr.c_str());
-	int day = atoi(dayStr.c_str());
-
-	if (year < 2000 || year > 9999 || month < 1 ||
-		 month > 12 || day < 1 || day > 31) {
-		std::cerr << RED "Error: " ORG "wrong date => " RESET << date << std::endl;
-		return (false);
-	}
-	return (true);
-}
-
 
 /*iss.eof(): Checks if the end of the stream has been reached (no trailing characters).
 !iss.fail(): Checks if the conversion failed (e.g., due to invalid format).*/
@@ -58,6 +34,29 @@ bool isValidValue(std::string const & valueStr) {
 		return (false);
 	}
 	return (value >= 0 && value <= 1000);
+}
+
+bool isValidDate(std::string const & date) {
+	// Check if the date is in the format YYYY-MM-DD
+	if (date.size() != 10 || date[4] != '-' || date[7] != '-') {
+		std::cerr << RED "Error: " ORG "bad date structure => " RESET << date << std::endl;
+		return (false);
+	}
+
+	std::string yearStr = date.substr(0, 4);
+	std::string monthStr = date.substr(5, 2);
+	std::string dayStr = date.substr(8, 2);
+
+	int year = atoi(yearStr.c_str());
+	int month = atoi(monthStr.c_str());
+	int day = atoi(dayStr.c_str());
+
+	if (year < 2000 || year > 9999 || month < 1 ||
+		 month > 12 || day < 1 || day > 31) {
+		std::cerr << RED "Error: " ORG "wrong date => " RESET << date << std::endl;
+		return (false);
+	}
+	return (true);
 }
 
 bool isValidStructure(std::istringstream & ss, std::string & date, std::string & valueStr) {
