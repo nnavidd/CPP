@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RPN.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnavidd <nnavidd@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 10:39:59 by nnavidd           #+#    #+#             */
-/*   Updated: 2025/01/14 12:47:56 by nnavidd          ###   ########.fr       */
+/*   Updated: 2025/04/28 09:07:16 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,32 @@
 #include <stdexcept>
 
 class RPN {
-public:
-    RPN();  // Default Constructor
-    RPN( RPN const & );  // Copy Constructor
-    RPN& operator=( RPN const & );  // Copy Assignment Operator
-    ~RPN();  // Destructor
+	private:
+		bool isOperator( std::string const &token );
 
-    int evaluate( std::string const & expression );
+		bool isNumber( std::string const &token );
+
+		// Helper function to apply an operator to two operands
+		int applyOperator( std::string const &op, int a, int b );
+		
+		// Helper function to convert string to int
+		int stringToInt( std::string const & str );
+
+		// Copy Constructor
+		RPN( RPN const & );
+		
+		// Copy Assignment Operator
+		RPN& operator=( RPN const & );
+	
+	public:
+		// Default Constructor
+		RPN();
+			
+		// Destructor
+		~RPN();
+
+		int evaluate( std::string const & expression );
     
-private:
-    bool isOperator( std::string const &token );
-    int applyOperator( std::string const &op, int a, int b );
-    int stringToInt( std::string const & str );  // Helper function to convert string to int
 };
 
 #endif

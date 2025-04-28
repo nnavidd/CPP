@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnavidd <nnavidd@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:18:41 by nnavidd           #+#    #+#             */
-/*   Updated: 2025/01/14 13:37:44 by nnavidd          ###   ########.fr       */
+/*   Updated: 2025/04/28 09:18:29 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,12 @@ int main(int argc, char *argv[]) {
         if (argc == 1) {
             std::list<std::string> li;
             li.push_back("8 9 * 9 - 9 - 9 - 4 - 1 +");
+            li.push_back("8 9 * 9 - 9 - 9 - 4 - 10 +");
             li.push_back("7 7 * 7 -");
+            li.push_back("7 7 * 7 "); // Invalid expression: missing operator
+            li.push_back("7 7 * 0 /"); // Invalid expression: division by zero
             li.push_back("1 2 * 2 / 2 * 2 4 - +");
+            li.push_back("1 2 * 2e / 2 * 2 4 - +"); // Invalid expression: non-integer
             li.push_back("(1 + 1)"); // Invalid expression
 
             for (std::list<std::string>::iterator i = li.begin(); i != li.end(); ++i) {
@@ -39,8 +43,10 @@ int main(int argc, char *argv[]) {
                     int result = rpn.evaluate(*i);
                     std::cout << CYAN "The result of:\"" ORG<< *i <<CYAN "\"is => " << GREEN << result << RESET << std::endl;
                 } catch (const std::exception &e) {
-                    std::cerr << e.what() << std::endl;
-                    return 1;
+					std::cout << CYAN "The result of:\"" ORG<< *i <<CYAN "\"is => ";
+                    std::cerr << RED "Error: " << ORG << e.what() << RESET << std::endl;
+                    // return 1;
+					continue;
                 }
             }
             return 0;
@@ -56,7 +62,7 @@ int main(int argc, char *argv[]) {
         int result = rpn.evaluate(argv[1]);
         std::cout << CYAN "The result of:\"" ORG<< argv[1] <<CYAN "\"is => " << GREEN << result << RESET << std::endl;
     } catch (const std::exception &e) {
-        std::cerr << e.what() << std::endl;
+        std::cerr << RED "Error: " << ORG << e.what() << RESET << std::endl;
         return 1;
     }
 
