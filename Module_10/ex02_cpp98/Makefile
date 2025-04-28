@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+         #
+#    By: nnavidd <nnavidd@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/27 09:27:14 by nnabaeei          #+#    #+#              #
-#    Updated: 2025/04/28 11:35:48 by nnabaeei         ###   ########.fr        #
+#    Updated: 2025/01/14 12:41:51 by nnavidd          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME     := PmergeMe
 CXX      := c++
-CXXFLAGS := -Wall -Wextra -Werror -std=c++17 -g
+CXXFLAGS := -Wall -Wextra -Werror -std=c++98 -g
 CXXFLAGS += -fsanitize=address -Wshadow -Wno-shadow
 
 # Directories
