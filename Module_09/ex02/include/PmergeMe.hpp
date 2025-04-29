@@ -7,7 +7,9 @@
 #include <iostream>
 #include <algorithm>
 #include <chrono>
-
+#include <string>
+#include <stdexcept>
+#include <functional> // For std::bind
 
 class PmergeMe {
 private:
