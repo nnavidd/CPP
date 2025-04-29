@@ -1,8 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PmergeMe.hpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/29 18:45:14 by nnabaeei          #+#    #+#             */
+/*   Updated: 2025/04/29 22:05:25 by nnabaeei         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
 #ifndef PMERGEME_HPP
 #define PMERGEME_HPP
 
+# define BLUE		"\033[38;5;4m"
+# define MAGENTA	"\033[38;5;5m"
+# define CYAN		"\033[38;5;44m"
+# define GREEN		"\033[38;5;2m"
+# define ORG		"\033[38;5;214m"
+# define RED		"\033[38;5;196m"
+# define RESET		"\033[0m"
+
 #include <vector>
-#include <list>
 #include <deque>
 #include <iostream>
 #include <algorithm>
@@ -12,74 +32,74 @@
 #include <functional> // For std::bind
 
 class PmergeMe {
-private:
-    std::vector<int> _vecData;
-    std::list<int> _listData;
+	private:
+		std::vector<int>	_vecData;
+		std::deque<int>		_dequeData;
 
-public:
-    PmergeMe();
-    PmergeMe(const PmergeMe& other);
-    PmergeMe& operator=(const PmergeMe& other);
-    ~PmergeMe();
+		template < typename T >
+		void insertIntoSortedContainer( T & sortedContainer, typename T::value_type num );
 
-    void loadInput(int argc, char* argv[]);
-    void sortVector();
-    void sortList();
+		PmergeMe( PmergeMe const & );
+		PmergeMe & operator=( PmergeMe const & );
 
-    const std::vector<int>& getVectorData() const;
-    const std::list<int>& getListData() const;
+	public:
+		PmergeMe();
+		~PmergeMe();
 
-    template <typename T>
-    void fordJohnsonSort(T& container);
+		void setVectorData( int const value );
+		void setDequeData( int const value );
 
-private:
-    template <typename T>
-    void insertIntoSorted(T& sortedContainer, typename T::value_type element);
+		std::vector<int> const & getVectorData() const;
+		std::deque<int> const & getDequeData() const;
+
+		template <typename T>
+		void fordJohnsonSortMethod( T & container );
 };
 
-// Template Definitions
 
 template <typename T>
-void PmergeMe::fordJohnsonSort(T& container) {
+void PmergeMe::insertIntoSortedContainer( T & sortedContainer, typename T::value_type num ) {
+    auto position = std::lower_bound(sortedContainer.begin(), sortedContainer.end(), num);
+    sortedContainer.insert(position, num);
+}
+
+
+template <typename T>
+void PmergeMe::fordJohnsonSortMethod( T & container ) {
     if (container.size() <= 1) return;
 
-    T largerElements, smallerElements;
+    T biggerNumberGroup, smallerNumberGroup;
 
-    // Pair elements and divide into two groups
+    // Pair numbers up and separate them into two groups of smaller and larger numbers
     auto it = container.begin();
     while (it != container.end()) {
+
         auto next = std::next(it);
+
         if (next == container.end()) {
-            largerElements.push_back(*it);
+            biggerNumberGroup.push_back(*it);
             break;
         }
 
         if (*it < *next) {
-            smallerElements.push_back(*it);
-            largerElements.push_back(*next);
+            smallerNumberGroup.push_back(*it);
+            biggerNumberGroup.push_back(*next);
         } else {
-            smallerElements.push_back(*next);
-            largerElements.push_back(*it);
+            smallerNumberGroup.push_back(*next);
+            biggerNumberGroup.push_back(*it);
         }
         std::advance(it, 2);
     }
 
-    // Recursively sort the larger group
-    fordJohnsonSort(largerElements);
+    // Sort the larger group using Ford-Johnson method
+    fordJohnsonSortMethod(biggerNumberGroup);
 
-    // Insert smaller elements into the sorted larger group
-    for (const auto& element : smallerElements) {
-        insertIntoSorted(largerElements, element);
+    // sort the smaller group numbers one by one by finding the correct position in the larger group
+    for (auto const & num : smallerNumberGroup) {
+        insertIntoSortedContainer(biggerNumberGroup, num);
     }
-
-    // Replace the original container with the sorted result
-    container = largerElements;
-}
-
-template <typename T>
-void PmergeMe::insertIntoSorted(T& sortedContainer, typename T::value_type element) {
-    auto position = std::lower_bound(sortedContainer.begin(), sortedContainer.end(), element);
-    sortedContainer.insert(position, element);
+	// Clear the original container and copy the sorted elements back
+    container = biggerNumberGroup;
 }
 
 #endif 

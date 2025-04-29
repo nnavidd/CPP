@@ -1,43 +1,45 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PmergeMe.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/29 18:44:57 by nnabaeei          #+#    #+#             */
+/*   Updated: 2025/04/29 20:20:29 by nnabaeei         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
 #include "../include/PmergeMe.hpp"
 
 PmergeMe::PmergeMe() {}
 
-PmergeMe::PmergeMe(const PmergeMe& other)
-    : _vecData(other._vecData), _listData(other._listData) {}
+PmergeMe::PmergeMe( PmergeMe const & other )
+    : _vecData(other._vecData), _dequeData(other._dequeData) {}
 
-PmergeMe& PmergeMe::operator=(const PmergeMe& other) {
+PmergeMe& PmergeMe::operator=( PmergeMe const & other ) {
     if (this != &other) {
         _vecData = other._vecData;
-        _listData = other._listData;
+        _dequeData = other._dequeData;
     }
     return *this;
 }
 
 PmergeMe::~PmergeMe() {}
 
-const std::vector<int>& PmergeMe::getVectorData() const {
+void PmergeMe::setVectorData( int const value ) {
+	_vecData.push_back(value);
+}
+
+void PmergeMe::setDequeData( int const value ) {
+	_dequeData.push_back(value);
+}
+
+std::vector<int> const & PmergeMe::getVectorData() const {
     return _vecData;
 }
 
-const std::list<int>& PmergeMe::getListData() const {
-    return _listData;
-}
-
-void PmergeMe::loadInput(int argc, char* argv[]) {
-    for (int i = 1; i < argc; ++i) {
-        int value = std::stoi(argv[i]);
-        if (value < 0) {
-            throw std::invalid_argument("Error: Negative numbers are not allowed.");
-        }
-        _vecData.push_back(value);
-        _listData.push_back(value);
-    }
-}
-
-void PmergeMe::sortVector() {
-    fordJohnsonSort(_vecData);
-}
-
-void PmergeMe::sortList() {
-    fordJohnsonSort(_listData);
+std::deque<int> const & PmergeMe::getDequeData() const {
+    return _dequeData;
 }
