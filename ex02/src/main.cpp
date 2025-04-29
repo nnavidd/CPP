@@ -6,7 +6,7 @@
 /*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 18:44:46 by nnabaeei          #+#    #+#             */
-/*   Updated: 2025/04/29 22:03:49 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2025/04/29 22:37:58 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void showContainerElements( std::string const & msg, std::vector<int> const & co
 
 template <typename Container>
 void testContainer( PmergeMe & sorter, Container & data, std::string const & containerName ) {
+
     std::cout << MAGENTA << "Testing with "  CYAN << containerName << ":"  RESET << std::endl;
 
     // Create a copy of the data for displaying the "Before" state
@@ -52,8 +53,8 @@ void testContainer( PmergeMe & sorter, Container & data, std::string const & con
 
 
 bool isNumber( std::string const & str ) {
-	for (std::string::const_iterator it = str.begin(); it != str.end(); ++it) {
-		if (!isdigit(*it)) {
+	for (auto it : str) {
+		if (!isdigit(it)) {
 			return false;
 		}
 	}
