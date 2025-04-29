@@ -1,133 +1,105 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/29 18:44:46 by nnabaeei          #+#    #+#             */
+/*   Updated: 2025/04/29 22:03:49 by nnabaeei         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
 #include "../include/PmergeMe.hpp"
 
 
-// template <typename T>
-// void displayData(const std::string& message, const T& container) {
-//     std::cout << message;
-//     for (const auto& val : container) {
-//         std::cout << val << " ";
-//     }
-//     std::cout << std::endl;
-// }
-
-// int main(int argc, char* argv[]) {
-//     if (argc < 2) {
-//         std::cerr << "Usage: ./PmergeMe <positive integers>" << std::endl;
-//         return 1;
-//     }
-
-//     try {
-//         PmergeMe sorter;
-
-//         sorter.loadInput(argc, argv);
-
-//         std::cout << "Testing with std::vector:" << std::endl;
-//         auto vecData = sorter.getVectorData();
-//         displayData("Before: ", vecData);
-
-//         auto startVec = std::chrono::high_resolution_clock::now();
-//         sorter.fordJohnsonSort(vecData);
-//         auto endVec = std::chrono::high_resolution_clock::now();
-//         displayData("After: ", vecData);
-//         std::chrono::duration<double, std::micro> elapsedVec = endVec - startVec;
-//         std::cout << "Time to process a range of " << vecData.size()
-//                   << " elements with std::vector: " << elapsedVec.count() << " us\n" << std::endl;
-
-//         std::cout << "Testing with std::list:" << std::endl;
-//         auto listData = sorter.getListData();
-//         displayData("Before: ", std::vector<int>(listData.begin(), listData.end()));
-
-//         auto startList = std::chrono::high_resolution_clock::now();
-//         sorter.fordJohnsonSort(listData);
-//         auto endList = std::chrono::high_resolution_clock::now();
-//         displayData("After: ", std::vector<int>(listData.begin(), listData.end()));
-//         std::chrono::duration<double, std::micro> elapsedList = endList - startList;
-//         std::cout << "Time to process a range of " << listData.size()
-//                   << " elements with std::list: " << elapsedList.count() << " us\n" << std::endl;
-
-//         std::cout << "Testing with std::deque:" << std::endl;
-//         std::deque<int> dequeData(sorter.getVectorData().begin(), sorter.getVectorData().end());
-//         displayData("Before: ", std::vector<int>(dequeData.begin(), dequeData.end()));
-
-//         auto startDeque = std::chrono::high_resolution_clock::now();
-//         sorter.fordJohnsonSort(dequeData);
-//         auto endDeque = std::chrono::high_resolution_clock::now();
-//         displayData("After: ", std::vector<int>(dequeData.begin(), dequeData.end()));
-//         std::chrono::duration<double, std::micro> elapsedDeque = endDeque - startDeque;
-//         std::cout << "Time to process a range of " << dequeData.size()
-//                   << " elements with std::deque: " << elapsedDeque.count() << " us\n" << std::endl;
-
-//     } catch (const std::exception& e) {
-//         std::cerr << e.what() << std::endl;
-//         return 1;
-//     }
-
-//     return 0;
-// }
-
-
-
-// template <typename T>
-void displayData(const std::string& message, const std::vector<int> & container) {
-    std::cout << message;
-    for (const auto& val : container) {
-        std::cout << val << " ";
+void showContainerElements( std::string const & msg, std::vector<int> const & container ) {
+    std::cout << ORG << msg << RESET;
+    for (auto const & element : container) {
+        std::cout << GREEN << element << RESET << " ";
     }
     std::cout << std::endl;
 }
 
+
 template <typename Container>
-void testContainer(PmergeMe& sorter, Container& data, const std::string& containerName) {
-    std::cout << "Testing with " << containerName << ":" << std::endl;
+void testContainer( PmergeMe & sorter, Container & data, std::string const & containerName ) {
+    std::cout << MAGENTA << "Testing with "  CYAN << containerName << ":"  RESET << std::endl;
 
     // Create a copy of the data for displaying the "Before" state
-    std::vector<int> beforeData;
-    for (const auto& item : data) {
-        beforeData.push_back(item);
+    std::vector<int> beforeSort;
+    for (auto const & item : data) {
+        beforeSort.push_back(item);
     }
-    displayData("Before: ", beforeData);
+    showContainerElements("Before: ", beforeSort);
 
-    auto start = std::chrono::high_resolution_clock::now();
-    sorter.fordJohnsonSort(data); // Assuming your sorting function in PmergeMe is named fordJohnsonSort and can take different container types
-    auto end = std::chrono::high_resolution_clock::now();
+    auto startTime = std::chrono::high_resolution_clock::now();
+    sorter.fordJohnsonSortMethod(data); // Assuming your sorting function in PmergeMe is named fordJohnsonSortMethod and can take different container types
+    auto endTime = std::chrono::high_resolution_clock::now();
 
     // Create a copy of the sorted data for displaying the "After" state
-    std::vector<int> afterData;
-    for (const auto& item : data) {
-        afterData.push_back(item);
+    std::vector<int> afterSort;
+    for (auto const & item : data) {
+        afterSort.push_back(item);
     }
-    displayData("After: ", afterData);
+    showContainerElements("After: ", afterSort);
 
-    std::chrono::duration<double, std::micro> elapsed = end - start;
-    std::cout << "Time to process a range of " << data.size()
-              << " elements with " << containerName << ": " << elapsed.count() << " us\n" << std::endl;
+    std::chrono::duration<double, std::micro> elapsedTime = endTime - startTime;
+    std::cout <<  MAGENTA "Time to process a range of " ORG << data.size()
+              << MAGENTA " elements with " CYAN << containerName << ": " GREEN << elapsedTime.count() << ORG " us"  RESET << std::endl;
 }
+
+
+bool isNumber( std::string const & str ) {
+	for (std::string::const_iterator it = str.begin(); it != str.end(); ++it) {
+		if (!isdigit(*it)) {
+			return false;
+		}
+	}
+	return true;
+}
+
+
+void loadInput( int argc, char* argv[], PmergeMe & sorter ) {
+    for (int i = 1; i < argc; ++i) {
+		if (!isNumber(argv[i])) {
+			throw std::invalid_argument("Invalid input. Only positive integers are allowed.");
+		}
+        int value = std::stoi(argv[i]);
+        if (value < 0) {
+            throw std::invalid_argument("Negative numbers are not allowed.");
+        }
+        sorter.setVectorData(value);
+		sorter.setDequeData(value);
+    }
+}
+
 
 int main(int argc, char* argv[]) {
     if (argc < 2) {
-        std::cerr << "Usage: ./PmergeMe <positive integers>" << std::endl;
+        std::cerr << RED "Error: " << ORG "Invalid number of arguments" << RESET << std::endl;
         return 1;
     }
 
     try {
         PmergeMe sorter;
-        sorter.loadInput(argc, argv);
+        loadInput(argc, argv, sorter);
 
         auto vecData = sorter.getVectorData();
-        auto listData = sorter.getListData();
-        std::deque<int> dequeData(vecData.begin(), vecData.end());
+        auto dequeData = sorter.getDequeData();
 
         std::vector<std::pair<std::string, std::function<void()>>> tests;
         tests.push_back({"std::vector", [&]() { testContainer(sorter, vecData, "std::vector"); }});
-        tests.push_back({"std::list", [&]() { testContainer(sorter, listData, "std::list"); }});
         tests.push_back({"std::deque", [&]() { testContainer(sorter, dequeData, "std::deque"); }});
 
-        for (const auto& test : tests) {
+        for (auto const & test : tests) {
             test.second(); // Execute the test function
+			std::cout << MAGENTA << "----------------------------------------" << RESET << std::endl;
         }
 
     } catch (const std::exception& e) {
-        std::cerr << e.what() << std::endl;
+        std::cerr << RED "Error: " << ORG << e.what() << RESET << std::endl;
         return 1;
     }
 
