@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:18:41 by nnavidd           #+#    #+#             */
-/*   Updated: 2025/04/28 09:18:29 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2025/04/30 13:06:19 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ int main(int argc, char *argv[]) {
                 RPN rpn;
                 try {
                     int result = rpn.evaluate(*i);
-                    std::cout << CYAN "The result of:\"" ORG<< *i <<CYAN "\"is => " << GREEN << result << RESET << std::endl;
+                    std::cout << CYAN "The result of: \"" ORG<< *i <<CYAN "\" is => " << GREEN << result << RESET << std::endl;
                 } catch (const std::exception &e) {
-					std::cout << CYAN "The result of:\"" ORG<< *i <<CYAN "\"is => ";
+					std::cout << CYAN "The result of: \"" ORG<< *i <<CYAN "\" is => ";
                     std::cerr << RED "Error: " << ORG << e.what() << RESET << std::endl;
                     // return 1;
 					continue;
@@ -60,7 +60,7 @@ int main(int argc, char *argv[]) {
 
     try {
         int result = rpn.evaluate(argv[1]);
-        std::cout << CYAN "The result of:\"" ORG<< argv[1] <<CYAN "\"is => " << GREEN << result << RESET << std::endl;
+        std::cout << CYAN "The result of: \"" ORG<< argv[1] <<CYAN "\" is => " << GREEN << result << RESET << std::endl;
     } catch (const std::exception &e) {
         std::cerr << RED "Error: " << ORG << e.what() << RESET << std::endl;
         return 1;
