@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 13:47:47 by nnabaeei          #+#    #+#             */
-/*   Updated: 2025/04/27 11:46:15 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2025/05/07 12:26:30 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ bool isValidDate(std::string const & date) {
 	int month = atoi(monthStr.c_str());
 	int day = atoi(dayStr.c_str());
 
-	if (year < 2000 || year > 9999 || month < 1 ||
+	if (year < 2008 || year > 9999 || month < 1 ||
 		 month > 12 || day < 1 || day > 31) {
 		std::cerr << RED "Error: " ORG "wrong date => " RESET << date << std::endl;
 		return (false);
@@ -91,7 +91,12 @@ void runCalculation(BTC const & btc, std::string const & date, std::string const
 	float result;
 
 	value = atof(valueStr.c_str());
-	rate = btc.getRate(date);
+	try {
+        rate = btc.getRate(date);  // This will throw if no valid rate is found
+    } catch (const std::exception& e) {
+        std::cerr << RED "Error: " ORG << e.what() << RESET << std::endl;
+        return;  // Exit the function if no valid rate is found
+    }
 	result = value * rate;
 
 	std::cout << GREEN << date << ORG " => " MAGENTA << value 
