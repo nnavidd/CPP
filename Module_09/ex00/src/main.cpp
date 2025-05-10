@@ -6,7 +6,7 @@
 /*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 13:47:47 by nnabaeei          #+#    #+#             */
-/*   Updated: 2025/05/10 18:09:02 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2025/05/10 18:32:56 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,45 @@
 !iss.fail(): Checks if the conversion failed (e.g., due to invalid format).*/
 // this function checks if the value is a positive number
 bool isValidValue(std::string const & valueStr) {
-	float				value;
-	std::istringstream	iss(valueStr);
 
-	iss >> value;
+	// Trim leading and trailing whitespace
+    std::string trimmed = valueStr;
+    trimmed.erase(0, trimmed.find_first_not_of(" \t\n\r\f\v"));
+    trimmed.erase(trimmed.find_last_not_of(" \t\n\r\f\v") + 1);
+    	
+    // Check if empty after trim
+    if (trimmed.empty()) {
+        std::cerr << RED "Error: " ORG "empty value" RESET << std::endl;
+        return false;
+    }
+    
+    // Check if valid float format
+    std::istringstream iss(trimmed);
+    float value;
+    iss >> value;
+    
     if (!(iss.eof() && !iss.fail())) {
-		std::cerr << RED "Error: " ORG "value not a number => " RESET << valueStr << std::endl;
-		return (false);
-	}
-	value = atof(valueStr.c_str());
-	if (value < 0) {
-		std::cerr << RED "Error: " ORG "not a positive number." RESET << std::endl;
-		return (false);
-	}
-	else if (value > 1000) {
-		std::cerr << RED "Error: " ORG "too large a number." RESET << std::endl;
-		return (false);
-	}
-	return (value >= 0 && value <= 1000);
+        std::cerr << RED "Error: " ORG "value not a number => " RESET << valueStr << std::endl;
+        return false;
+    }
+    
+    // Check range
+    try {
+        value = std::stof(trimmed);
+        if (value < 0) {
+            std::cerr << RED "Error: " ORG "not a positive number." RESET << std::endl;
+            return false;
+        }
+        if (value > 1000) {
+            std::cerr << RED "Error: " ORG "too large a number." RESET << std::endl;
+            return false;
+        }
+    } catch (const std::exception& e) {
+        std::cerr << RED "Error: " ORG "failed to convert value => " RESET << valueStr << std::endl;
+        return false;
+    }
+    
+    return true;
 }
 
 // this function checks if the date is in the format YYYY-MM-DD
@@ -94,16 +115,43 @@ bool isValidDate(std::string const & date) {
 }
 
 // this function checks if the input line has the correct structure
-bool isValidStructure(std::istringstream & ss, std::string & date, std::string & valueStr) {
-	if (ss.str().find('|') == 11) {
-		if (std::getline(ss, date, '|') && std::getline(ss, valueStr)) {
-			date = date.substr(0, date.find_last_not_of(" \t\n\r\f\v") + 1);
-			valueStr = valueStr.substr(valueStr.find_first_not_of(" \t\n\r\f\v"));
-			return (true);
-		}
-	} else
-		std::cerr << RED "Error: " ORG "bad input format => " RESET << ss.str() << std::endl;
-	return (false);
+// it checks if the line has a pipe and if the date and value are not empty
+bool isValidStructure(std::istringstream& ss, std::string& date, std::string& valueStr) {
+    std::string line = ss.str();
+    if (line.empty()) {
+		std::cerr << RED "Error: " ORG "empty line" RESET << std::endl;
+		return false;
+	}
+	size_t pipePos = line.find('|');
+    
+    // Check if pipe exists
+    if (pipePos == std::string::npos) {
+        std::cerr << RED "Error: " ORG "missing separator '|' => " RESET << line << std::endl;
+        return false;
+    }
+    
+    // Extract date and value parts
+    date = line.substr(0, pipePos);
+    valueStr = line.substr(pipePos + 1);
+    
+    // Trim whitespace
+    date.erase(0, date.find_first_not_of(" \t\n\r\f\v"));
+    date.erase(date.find_last_not_of(" \t\n\r\f\v") + 1);
+    
+    valueStr.erase(0, valueStr.find_first_not_of(" \t\n\r\f\v"));
+    valueStr.erase(valueStr.find_last_not_of(" \t\n\r\f\v") + 1);
+    
+    // Check if both parts exist after trimming
+    if (date.empty()) {
+        std::cerr << RED "Error: " ORG "missing date => " RESET << line << std::endl;
+        return false;
+    }
+    if (valueStr.empty()) {
+        std::cerr << RED "Error: " ORG "missing value => " RESET << line << std::endl;
+        return false;
+    }
+    
+    return true;
 }
 
 // this function checks if the date and value are valid
