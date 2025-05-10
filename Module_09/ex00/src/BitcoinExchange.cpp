@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnavidd <nnavidd@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 13:46:50 by nnabaeei          #+#    #+#             */
-/*   Updated: 2025/01/14 09:00:05 by nnavidd          ###   ########.fr       */
+/*   Updated: 2025/05/11 00:10:59 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ bool BTC::loadDatabase( std::string const & dbFilePath ) {
 // Private method to find the closest date in the map
 std::string BTC::findClosestDate( std::string const & date ) const {
 	std::map<std::string, float>::const_iterator it = btcRates.lower_bound(date);
-	if (it == btcRates.begin())
-		return (0);
+	if (it == btcRates.begin() && it->first != date)
+		return ("");
 	// if (it != btcRates.end() && it->first != date) {
 	if (it->first != date) {
 		--it;
@@ -73,6 +73,10 @@ float BTC::getRate( std::string const & date ) const {
 	std::map<std::string, float>::const_iterator it = btcRates.find(date);
 	if (it == btcRates.end()) {
 		std::string closestDate = findClosestDate(date);
+		if (closestDate.empty()) {
+			std::string msg = RED "Error: " ORG "date not found in database => " RESET + date;
+			throw std::runtime_error(msg);
+		}
 		return (btcRates.at(closestDate));
 	}
 	return (it->second);

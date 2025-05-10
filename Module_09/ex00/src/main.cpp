@@ -6,7 +6,7 @@
 /*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 13:47:47 by nnabaeei          #+#    #+#             */
-/*   Updated: 2025/05/10 18:32:56 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2025/05/11 00:12:14 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ bool isValidValue(std::string const & valueStr) {
     try {
         value = std::stof(trimmed);
         if (value < 0) {
-            std::cerr << RED "Error: " ORG "not a positive number." RESET << std::endl;
+            std::cerr << RED "Error: " ORG "not a positive number => " RESET << value << std::endl;
             return false;
         }
         if (value > 1000) {
-            std::cerr << RED "Error: " ORG "too large a number." RESET << std::endl;
+            std::cerr << RED "Error: " ORG "too large a number => " RESET << value << std::endl;
             return false;
         }
     } catch (const std::exception& e) {
@@ -83,7 +83,7 @@ bool isValidDate(std::string const & date) {
 		int month = atoi(monthStr.c_str());
 		int day = atoi(dayStr.c_str());
 
-		if (year < 2000 || year > 9999) {
+		if (year < 2009 || year > 9999) {
             std::cerr << RED "Error: " ORG "year out of range => " RESET << date << std::endl;
             return false;
         }
@@ -172,11 +172,16 @@ void runCalculation(BTC const & btc, std::string const & date, std::string const
 	float result;
 
 	value = atof(valueStr.c_str());
-	rate = btc.getRate(date);
-	result = value * rate;
+	try {
+		rate = btc.getRate(date);
+		result = value * rate;
 
-	std::cout << GREEN << date << ORG " => " MAGENTA << value 
-			<< ORG " = " CYAN << result << RESET << std::endl;
+		std::cout << GREEN << date << ORG " => " MAGENTA << value 
+				<< ORG " = " CYAN << result << RESET << std::endl;
+	} catch (const std::exception& e) {
+		std::cerr << e.what() << std::endl;
+		return;
+	}
 }	
 
 // this function reads the input file
