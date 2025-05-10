@@ -6,7 +6,7 @@
 /*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 13:47:47 by nnabaeei          #+#    #+#             */
-/*   Updated: 2025/04/27 11:46:15 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2025/05/10 18:09:02 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,19 +44,52 @@ bool isValidDate(std::string const & date) {
 		return (false);
 	}
 
+	// Extract year, month, and day parts
 	std::string yearStr = date.substr(0, 4);
 	std::string monthStr = date.substr(5, 2);
 	std::string dayStr = date.substr(8, 2);
 
-	int year = atoi(yearStr.c_str());
-	int month = atoi(monthStr.c_str());
-	int day = atoi(dayStr.c_str());
+	// Check if all parts are numeric
+    for (char c : yearStr + monthStr + dayStr) {
+        if (!std::isdigit(c)) {
+            std::cerr << RED "Error: " ORG "date contains non-numeric characters => " RESET << date << std::endl;
+            return (false);
+        }
+    }
 
-	if (year < 2000 || year > 9999 || month < 1 ||
-		 month > 12 || day < 1 || day > 31) {
-		std::cerr << RED "Error: " ORG "wrong date => " RESET << date << std::endl;
-		return (false);
-	}
+	try {
+		int year = atoi(yearStr.c_str());
+		int month = atoi(monthStr.c_str());
+		int day = atoi(dayStr.c_str());
+
+		if (year < 2000 || year > 9999) {
+            std::cerr << RED "Error: " ORG "year out of range => " RESET << date << std::endl;
+            return false;
+        }
+		if (month < 1 || month > 12) {
+            std::cerr << RED "Error: " ORG "invalid month => " RESET << date << std::endl;
+            return false;
+        }
+        if (day < 1) {
+            std::cerr << RED "Error: " ORG "invalid day => " RESET << date << std::endl;
+            return false;
+        }
+		// Add month-specific day validation
+		int daysInMonth[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+		
+		// Adjust February for leap years
+		if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0))
+			daysInMonth[2] = 29;
+			
+		if (day > daysInMonth[month]) {
+			std::cerr << RED "Error: " ORG "invalid day for month => " RESET << date << std::endl;
+			return false;
+		}
+	}  catch (const std::exception& e) {
+        std::cerr << RED "Error: " ORG "failed to parse date => " RESET << date << std::endl;
+        return false;
+    }
+	
 	return (true);
 }
 
