@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnavidd <nnavidd@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 13:43:12 by nnabaeei          #+#    #+#             */
-/*   Updated: 2025/01/14 09:11:55 by nnavidd          ###   ########.fr       */
+/*   Updated: 2025/05/11 19:31:54 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,13 @@ class BTC {
 		// Method to get the rate for a specific date
 		float getRate( std::string const & date ) const;
 };
+
+bool isValidDate(std::string const & date);
+bool isValidValue(std::string const & valueStr);
+bool isValidStructure(std::istringstream & ss, std::string & date, std::string & valueStr);
+bool fetchDateValue(std::istringstream & ss, std::string & date, std::string & valueStr);
+void runCalculation(BTC const & btc, std::string const & date, std::string const & valueStr);
+bool readInputFile(std::ifstream& inputFile);
 
 #endif
 
