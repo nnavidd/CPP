@@ -6,7 +6,7 @@
 /*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 10:39:46 by nnavidd           #+#    #+#             */
-/*   Updated: 2025/04/28 09:16:09 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2025/05/12 15:54:05 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,88 +17,119 @@
 RPN::RPN() {}
 
 // Copy Constructor
-RPN::RPN( RPN const & ) {}
+RPN::RPN( RPN const & other): _stack(other._stack) {}
 
 // Copy Assignment Operator
-RPN& RPN::operator=( RPN const & other ) {
+RPN & RPN::operator=( RPN const & other ) {
     if (this != &other) {
         *this = other;
     }
-    return *this;
+    return (*this);
 }
 
 // Destructor
 RPN::~RPN() {}
 
 // Helper function to convert string to int
-int RPN::stringToInt( std::string const & str ) {
-    std::stringstream ss(str);
-    int value;
-    ss >> value;
-    if (ss.fail()) {
-        throw std::runtime_error("Invalid number");
+__int128 RPN::stringToInt(const std::string& str) {
+    bool negative = false;
+    size_t i = 0;
+    if (str[i] == '-') {
+        negative = true;
+        ++i;
     }
-	if (value >= 10) {
-		throw std::runtime_error("Number bigger than 10");
-	}
-    return value;
+
+    if (i == str.length()) {
+        throw InvalidNumberException(str);
+    }
+
+    __int128 result = 0;
+    for (; i < str.length(); ++i) {
+        if (!std::isdigit(str[i])) {
+            throw InvalidNumberException(str);
+        }
+        result = result * 10 + (str[i] - '0');
+    }
+
+    if (negative) result = -result;
+
+    // Optional: still enforce number must be within -9 to 9 range
+    if (result >= 10 || result <= -10) {
+        throw NumberTooLargeException(str);
+    }
+
+    return (result);
 }
 
 // Helper function to check if a token is an operator
-bool RPN::isOperator( std::string const & token ) {
-    return token == "+" || token == "-" || token == "*" || token == "/";
+bool RPN::isOperator( std::string const & token ) const {
+    return (token == "+" || token == "-" || token == "*" || token == "/");
 }
 
 // Helper function to apply an operator to two operands
-int RPN::applyOperator( std::string const & op, int a, int b ) {
+__int128 RPN::applyOperator( std::string const & op, __int128 a, __int128 b ) {
     if (op == "+") return a + b;
     if (op == "-") return a - b;
     if (op == "*") return a * b;
     if (op == "/") {
         if (b == 0) {
-            throw std::runtime_error( ORG "Division by zero" RESET);
+            throw DivisionByZeroException();
         }
-        return a / b;
+        return (a / b);
     }
-    throw std::runtime_error(ORG "Invalid operator" RESET);
+    throw InvalidOperatorException(op);
 }
 
-bool RPN::isNumber( std::string const & str ) {
-	for (std::string::const_iterator it = str.begin(); it != str.end(); ++it) {
-		if (!isdigit(*it)) {
-			return false;
-		}
-	}
-	return true;
+bool RPN::isNumber(const std::string& str) const {
+    if (str.empty()) return (false);
+    
+	size_t i = 0;
+    if (str[0] == '-') {
+        if (str.size() == 1) return (false); // "-" alone is not a number
+        i = 1;
+    }
+
+    for (; i < str.size(); ++i) {
+        if (!std::isdigit(str[i])) 
+			return (false);
+    }
+    return (true);
 }
 
+// The first number popped is the second operand, The second number popped is the first operand.
 // Evaluate the RPN expression
-int RPN::evaluate( std::string const & expression ) {
-    std::stack<int> stack;
+__int128 RPN::evaluate(const std::string& expression) {
+    // Clear stack from previous evaluations
+    while (!_stack.empty()) {
+        _stack.pop();
+    }
+    
     std::istringstream iss(expression);
     std::string token;
-
+    
+    // Process each token in the expression
     while (iss >> token) {
         if (isNumber(token)) {
-            stack.push(stringToInt(token));
+            _stack.push(stringToInt(token));
         } else if (isOperator(token)) {
-            if (stack.size() < 2) {
-                throw std::runtime_error(ORG "Not enough operands" RESET);
+            if (_stack.size() < 2) {
+                throw NotEnoughOperandsException();
             }
-            int b = stack.top(); stack.pop();
-            int a = stack.top(); stack.pop();
-            int result = applyOperator(token, a, b);
-            stack.push(result);
+            __int128 b = _stack.top(); _stack.pop();
+            __int128 a = _stack.top(); _stack.pop();
+            __int128 result = applyOperator(token, a, b);
+            _stack.push(result);
         } else {
-            throw std::runtime_error(ORG "Invalid token" RESET);
+            throw InvalidTokenException(token);
         }
     }
-
-    if (stack.size() != 1) {
-        throw std::runtime_error(ORG "Invalid token or Not enough operands" RESET);
+    
+    // After processing all tokens, the stack should have exactly one value
+    if (_stack.size() != 1) {
+        throw InvalidExpressionException();
     }
-
-    return stack.top();
+    
+    return (_stack.top());
 }
 
 

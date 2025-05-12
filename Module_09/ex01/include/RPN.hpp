@@ -6,7 +6,7 @@
 /*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 10:39:59 by nnavidd           #+#    #+#             */
-/*   Updated: 2025/04/28 09:07:16 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2025/05/12 15:51:25 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,17 @@
 #include <stack>
 #include <sstream>
 #include <stdexcept>
+#include "RPNExceptions.hpp"
 
 class RPN {
 	private:
-		bool isOperator( std::string const &token );
-
-		bool isNumber( std::string const &token );
-
-		// Helper function to apply an operator to two operands
-		int applyOperator( std::string const &op, int a, int b );
+		std::stack<__int128> _stack;
 		
-		// Helper function to convert string to int
-		int stringToInt( std::string const & str );
+		// Helper methods
+		bool isOperator( std::string const &token ) const;
+		bool isNumber( std::string const &token ) const;
+		__int128 applyOperator( std::string const &op, __int128 a, __int128 b );		
+		__int128 stringToInt( std::string const & str );
 
 		// Copy Constructor
 		RPN( RPN const & );
@@ -54,7 +53,8 @@ class RPN {
 		// Destructor
 		~RPN();
 
-		int evaluate( std::string const & expression );
+		// Main evaluation method
+		__int128 evaluate( std::string const & expression );
     
 };
 
