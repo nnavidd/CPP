@@ -6,7 +6,7 @@
 /*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 18:45:14 by nnabaeei          #+#    #+#             */
-/*   Updated: 2025/04/29 22:05:25 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2025/05/13 14:07:00 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ class PmergeMe {
 		template < typename T >
 		void insertIntoSortedContainer( T & sortedContainer, typename T::value_type num );
 
+		std::vector<size_t> generateJacobsthalIndices(size_t size);
+
 		PmergeMe( PmergeMe const & );
 		PmergeMe & operator=( PmergeMe const & );
 
@@ -48,6 +50,8 @@ class PmergeMe {
 
 		void setVectorData( int const value );
 		void setDequeData( int const value );
+
+		void reserveInput(size_t size);
 
 		std::vector<int> const & getVectorData() const;
 		std::deque<int> const & getDequeData() const;
@@ -69,6 +73,11 @@ void PmergeMe::fordJohnsonSortMethod( T & container ) {
     if (container.size() <= 1) return;
 
     T biggerNumberGroup, smallerNumberGroup;
+
+	if constexpr (std::is_same<T, std::vector<typename T::value_type>>::value) {
+		biggerNumberGroup.reserve(container.size());
+		smallerNumberGroup.reserve(container.size() / 2);
+	}
 
     // Pair numbers up and separate them into two groups of smaller and larger numbers
     auto it = container.begin();
@@ -94,12 +103,34 @@ void PmergeMe::fordJohnsonSortMethod( T & container ) {
     // Sort the larger group using Ford-Johnson method
     fordJohnsonSortMethod(biggerNumberGroup);
 
-    // sort the smaller group numbers one by one by finding the correct position in the larger group
-    for (auto const & num : smallerNumberGroup) {
-        insertIntoSortedContainer(biggerNumberGroup, num);
-    }
+	// Use the Jacobsthal sequence to determine the insertion order
+	std::vector<size_t> insertionOrder = generateJacobsthalIndices(smallerNumberGroup.size());
+	
+	/////////////////////////////////////////
+	// std::vector<size_t> insertionOrders = generateJacobsthalIndices(10);
+	// std::cout << "insertionOrders: ";
+	// for (auto i : insertionOrders) {
+	// 	std::cout << i << ", ";	
+	// } std::cout << std::endl;
+
+	// if (insertionOrder.size() > 0 && !smallerNumberGroup.empty()) {
+	// 	std::cout << "smallerNumberGroup: ";
+	// 	for (auto i : smallerNumberGroup) {
+	// 		std::cout << i << " ";
+		
+	// 	} std::cout << std::endl;
+	// }
+	///////////////////////////////////////
+
+	// Insert the smaller numbers into the sorted Larger group at the appropriate possitions according to the Jacobsthal sequence
+	for (size_t idx : insertionOrder) {
+		insertIntoSortedContainer(biggerNumberGroup, smallerNumberGroup[idx]);
+	}
+
+
+
 	// Clear the original container and copy the sorted elements back
     container = biggerNumberGroup;
 }
 
-#endif 
+#endif // PMERGEME_HPP

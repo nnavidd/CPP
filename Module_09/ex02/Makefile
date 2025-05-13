@@ -6,7 +6,7 @@
 #    By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/27 09:27:14 by nnabaeei          #+#    #+#              #
-#    Updated: 2025/04/28 11:35:48 by nnabaeei         ###   ########.fr        #
+#    Updated: 2025/05/12 20:24:31 by nnabaeei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,18 +20,18 @@ SRC_DIR := src
 INCLUDE_DIR := include
 OBJ_DIR := obj
 
-# Find all .cpp files in the SRC directory
-CPP_FILES := $(wildcard $(SRC_DIR)/*.cpp)
+# Explicit source and header files
+SRC_FILES := $(SRC_DIR)/main.cpp $(SRC_DIR)/PmergeMe.cpp
+HEADER_FILES := $(INCLUDE_DIR)/PmergeMe.hpp
 
-# Find all .hpp files in the INCLUDE directory
-HEADERS := $(wildcard $(INCLUDE_DIR)/*.hpp) $(wildcard $(INCLUDE_DIR)/*.tpp)
 
-# Generate object file names
-OBJ_FILES := $(addprefix $(OBJ_DIR)/,$(notdir $(CPP_FILES:.cpp=.o)))
+# Object files (same names as source, different extension, in obj/)
+# patsubst converts each .cpp to corresponding .o inside obj/.
+OBJ_FILES := $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRC_FILES))
 
 all: $(NAME)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp $(HEADERS)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp $(HEADER_FILES)
 	@mkdir -p $(@D)
 	@$(CXX)  -c -o $@ $< $(CXXFLAGS) -I$(INCLUDE_DIR)
 
@@ -47,10 +47,11 @@ fclean: clean
 
 re: clean all
 
-.PHONY: all, clean, fclean, re
+.PHONY: all clean fclean re
 
 BLUE	= "\033[38;5;4m"
 GREEN	= "\033[38;5;2m"
 ORG		= "\033[38;5;214m"
 RED		= "\033[38;5;196m"
 RESET	= "\033[0m"
+

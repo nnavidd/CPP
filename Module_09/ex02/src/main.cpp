@@ -6,7 +6,7 @@
 /*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 18:44:46 by nnabaeei          #+#    #+#             */
-/*   Updated: 2025/04/29 22:37:58 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2025/05/13 14:07:31 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ int main(int argc, char* argv[]) {
 
     try {
         PmergeMe sorter;
+		sorter.reserveInput(argc - 1);
         loadInput(argc, argv, sorter);
 
         auto vecData = sorter.getVectorData();
