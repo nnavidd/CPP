@@ -6,7 +6,7 @@
 /*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 18:44:57 by nnabaeei          #+#    #+#             */
-/*   Updated: 2025/05/13 13:53:00 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2025/05/13 17:52:37 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,79 @@ void PmergeMe::reserveInput(size_t size) {
     // _dequeData.resize(size);  // not needed for deque but safe
 }
 
+void PmergeMe::fordJohnsonSortVector(std::vector<int>& container) {
+    if (container.size() <= 1) return;
+
+    std::vector<int> biggerGroup, smallerGroup;
+    biggerGroup.reserve(container.size());
+    smallerGroup.reserve(container.size() / 2);
+
+    auto it = container.begin();
+    while (it != container.end()) {
+        auto next = std::next(it);
+        if (next == container.end()) {
+            biggerGroup.push_back(*it);
+            break;
+        }
+
+        if (*it < *next) {
+            smallerGroup.push_back(*it);
+            biggerGroup.push_back(*next);
+        } else {
+            smallerGroup.push_back(*next);
+            biggerGroup.push_back(*it);
+        }
+        std::advance(it, 2);
+    }
+
+    fordJohnsonSortVector(biggerGroup);
+
+    std::vector<size_t> insertOrder = generateJacobsthalIndices(smallerGroup.size());
+    for (size_t idx : insertOrder) {
+        auto pos = std::lower_bound(biggerGroup.begin(), biggerGroup.end(), smallerGroup[idx]);
+        biggerGroup.insert(pos, smallerGroup[idx]);
+    }
+
+    container = biggerGroup;
+	// std::cout << "vector" << std::endl;
+}
+
+
+void PmergeMe::fordJohnsonSortDeque(std::deque<int>& container) {
+    if (container.size() <= 1) return;
+
+    std::deque<int> biggerGroup, smallerGroup;
+
+    auto it = container.begin();
+    while (it != container.end()) {
+        auto next = std::next(it);
+        if (next == container.end()) {
+            biggerGroup.push_back(*it);
+            break;
+        }
+
+        if (*it < *next) {
+            smallerGroup.push_back(*it);
+            biggerGroup.push_back(*next);
+        } else {
+            smallerGroup.push_back(*next);
+            biggerGroup.push_back(*it);
+        }
+        std::advance(it, 2);
+    }
+
+    fordJohnsonSortDeque(biggerGroup);
+
+    std::vector<size_t> insertOrder = generateJacobsthalIndices(smallerGroup.size());
+    for (size_t idx : insertOrder) {
+        auto pos = std::lower_bound(biggerGroup.begin(), biggerGroup.end(), smallerGroup[idx]);
+        biggerGroup.insert(pos, smallerGroup[idx]);
+    }
+
+    container = biggerGroup;
+	// std::cout << "deque" << std::endl;
+}
+
 
 std::vector<size_t> PmergeMe::generateJacobsthalIndices(size_t size) {
     std::vector<size_t> jacobIndices;
@@ -61,9 +134,6 @@ std::vector<size_t> PmergeMe::generateJacobsthalIndices(size_t size) {
     // Jacobsthal sequence: J(n) = J(n-1) + 2 * J(n-2)
     std::vector<size_t> jacobSeq = {0, 1, 3};
     while (jacobSeq.back() < size) {
-		// size_t next = jacobSeq[jacobSeq.size() - 1] + 2 * jacobSeq[jacobSeq.size() - 2];
-		// if (next != 1 || jacobSeq.size() > 2)
-        // 	jacobSeq.push_back(next);
         jacobSeq.push_back(jacobSeq[jacobSeq.size() - 1] + 2 * jacobSeq[jacobSeq.size() - 2]);
     }
 
@@ -82,12 +152,6 @@ std::vector<size_t> PmergeMe::generateJacobsthalIndices(size_t size) {
 	// 	std::cout << i << " ";
 	// } std::cout << std::endl;
 	// /////////////////////////////////////////////////
-	//  ////////////////////////////////////////////
-	// std::cout << "JacobIndices: ";
-	// for (auto i : jacobIndices) {
-	// 	std::cout << i << " ";
-	// } std::cout << std::endl;
-	// /////////////////////////////////////////////////
 
     // Insert remaining indices in natural order
     for (size_t i = 0; i < size; ++i) {
@@ -96,9 +160,9 @@ std::vector<size_t> PmergeMe::generateJacobsthalIndices(size_t size) {
         }
     }
 	//  ////////////////////////////////////////////
-	// std::cout << "Used: ";
-	// for (size_t i = 0; i < used.size(); i++) {
-	// 	std::cout << used[i] << " ";
+	// std::cout << "JacobIndices: ";
+	// for (auto i : jacobIndices) {
+	// 	std::cout << i << " ";
 	// } std::cout << std::endl;
 	// /////////////////////////////////////////////////
 

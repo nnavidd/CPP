@@ -6,15 +6,15 @@
 /*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 18:44:46 by nnabaeei          #+#    #+#             */
-/*   Updated: 2025/05/13 14:07:31 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2025/05/13 17:44:38 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "../include/PmergeMe.hpp"
 
-
-void showContainerElements( std::string const & msg, std::vector<int> const & container ) {
+template <typename T>
+void showContainerElements( std::string const & msg, T const & container ) {
     std::cout << ORG << msg << RESET;
     for (auto const & element : container) {
         std::cout << GREEN << element << RESET << " ";
@@ -22,6 +22,14 @@ void showContainerElements( std::string const & msg, std::vector<int> const & co
     std::cout << std::endl;
 }
 
+template <typename T>
+T CopyContainerElements( T const & container ) {
+	T copy;
+	for (auto const & item : container) {
+		copy.push_back(item);
+	}
+	return copy;
+}
 
 template <typename Container>
 void testContainer( PmergeMe & sorter, Container & data, std::string const & containerName ) {
@@ -29,21 +37,28 @@ void testContainer( PmergeMe & sorter, Container & data, std::string const & con
     std::cout << MAGENTA << "Testing with "  CYAN << containerName << ":"  RESET << std::endl;
 
     // Create a copy of the data for displaying the "Before" state
-    std::vector<int> beforeSort;
-    for (auto const & item : data) {
-        beforeSort.push_back(item);
-    }
+	auto beforeSort = CopyContainerElements(data);
     showContainerElements("Before: ", beforeSort);
 
-    auto startTime = std::chrono::high_resolution_clock::now();
-    sorter.fordJohnsonSortMethod(data); // Assuming your sorting function in PmergeMe is named fordJohnsonSortMethod and can take different container types
-    auto endTime = std::chrono::high_resolution_clock::now();
+	// Declare timing variables
+    std::chrono::high_resolution_clock::time_point startTime;
+    std::chrono::high_resolution_clock::time_point endTime;
+
+	// Call specific sorting function based on container type
+    if constexpr (std::is_same<Container, std::vector<int>>::value) {
+    	startTime = std::chrono::high_resolution_clock::now();	
+        sorter.fordJohnsonSortVector(data);
+    	endTime = std::chrono::high_resolution_clock::now();
+    } else if constexpr (std::is_same<Container, std::deque<int>>::value) {
+    	startTime = std::chrono::high_resolution_clock::now();
+        sorter.fordJohnsonSortDeque(data);
+    	endTime = std::chrono::high_resolution_clock::now();
+    }
+
+    // sorter.fordJohnsonSortMethod(data); // Assuming your sorting function in PmergeMe is named fordJohnsonSortMethod and can take different container types
 
     // Create a copy of the sorted data for displaying the "After" state
-    std::vector<int> afterSort;
-    for (auto const & item : data) {
-        afterSort.push_back(item);
-    }
+    auto afterSort = CopyContainerElements(data);
     showContainerElements("After: ", afterSort);
 
     std::chrono::duration<double, std::micro> elapsedTime = endTime - startTime;
@@ -52,15 +67,21 @@ void testContainer( PmergeMe & sorter, Container & data, std::string const & con
 }
 
 
-bool isNumber( std::string const & str ) {
-	for (auto it : str) {
-		if (!isdigit(it)) {
-			return false;
-		}
-	}
-	return true;
-}
+bool isNumber(const std::string& str) {
+    if (str.empty()) return (false);
+    
+	size_t i = 0;
+    if (str[0] == '-') {
+        if (str.size() == 1) return (false); // "-" alone is not a number
+        i = 1;
+    }
 
+    for (; i < str.size(); ++i) {
+        if (!std::isdigit(str[i])) 
+			return (false);
+    }
+    return (true);
+}
 
 void loadInput( int argc, char* argv[], PmergeMe & sorter ) {
     for (int i = 1; i < argc; ++i) {
@@ -91,14 +112,22 @@ int main(int argc, char* argv[]) {
         auto vecData = sorter.getVectorData();
         auto dequeData = sorter.getDequeData();
 
-        std::vector<std::pair<std::string, std::function<void()>>> tests;
-        tests.push_back({"std::vector", [&]() { testContainer(sorter, vecData, "std::vector"); }});
-        tests.push_back({"std::deque", [&]() { testContainer(sorter, dequeData, "std::deque"); }});
+        // std::vector<std::pair<std::string, std::function<void()>>> tests;
+        // tests.push_back({"std::vector", [&]() { testContainer(sorter, vecData, "std::vector"); }});
+        // tests.push_back({"std::deque", [&]() { testContainer(sorter, dequeData, "std::deque"); }});
 
-        for (auto const & test : tests) {
-            test.second(); // Execute the test function
-			std::cout << MAGENTA << "----------------------------------------" << RESET << std::endl;
-        }
+        // for (auto const & test : tests) {
+        //     test.second(); // Execute the test function
+		// 	std::cout << MAGENTA << "----------------------------------------" << RESET << std::endl;
+        // }
+
+		testContainer(sorter, vecData, "std::vector");
+        std::cout << MAGENTA << "----------------------------------------" << RESET << std::endl;
+
+        testContainer(sorter, dequeData, "std::deque");
+        std::cout << MAGENTA << "----------------------------------------" << RESET << std::endl;
+
+
 
     } catch (const std::exception& e) {
         std::cerr << RED "Error: " << ORG << e.what() << RESET << std::endl;
