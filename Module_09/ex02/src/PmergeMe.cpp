@@ -6,7 +6,7 @@
 /*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 18:44:57 by nnabaeei          #+#    #+#             */
-/*   Updated: 2025/05/13 23:27:06 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2025/05/22 15:31:09 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,19 @@ void PmergeMe::setVectorData( int const value ) {
 
 void PmergeMe::setDequeData( int const value ) {
 	_dequeData.push_back(value);
+}
+
+void PmergeMe::clearData() {
+    _vecData.clear();
+    _dequeData.clear();
+}
+
+void PmergeMe::setVectorData(const std::vector<int>& values) {
+    _vecData.insert(_vecData.end(), values.begin(), values.end());
+}
+
+void PmergeMe::setDequeData(const std::deque<int>& values) {
+    _dequeData.insert(_dequeData.end(), values.begin(), values.end());
 }
 
 std::vector<int> const & PmergeMe::getVectorData() const {

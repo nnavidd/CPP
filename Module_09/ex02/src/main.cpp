@@ -6,7 +6,7 @@
 /*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 18:44:46 by nnabaeei          #+#    #+#             */
-/*   Updated: 2025/05/13 17:44:38 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2025/05/22 15:32:45 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,6 @@ void testContainer( PmergeMe & sorter, Container & data, std::string const & con
     	endTime = std::chrono::high_resolution_clock::now();
     }
 
-    // sorter.fordJohnsonSortMethod(data); // Assuming your sorting function in PmergeMe is named fordJohnsonSortMethod and can take different container types
-
     // Create a copy of the sorted data for displaying the "After" state
     auto afterSort = CopyContainerElements(data);
     showContainerElements("After: ", afterSort);
@@ -99,27 +97,51 @@ void loadInput( int argc, char* argv[], PmergeMe & sorter ) {
 
 
 int main(int argc, char* argv[]) {
-    if (argc < 2) {
-        std::cerr << RED "Error: " << ORG "Invalid number of arguments" << RESET << std::endl;
-        return 1;
-    }
-
     try {
         PmergeMe sorter;
+        if (argc < 2) {
+            // Default test cases
+            std::cout << ORG "No input provided. Running default tests with 10 and 100 elements..." RESET << std::endl;
+
+            {
+                // 10 number test
+                std::vector<int> test10;
+                for (int i = 10; i > 0; --i) test10.push_back(i);
+                sorter.setVectorData(test10);
+                sorter.setDequeData(std::deque<int>(test10.begin(), test10.end()));
+    
+                auto vecData10 = sorter.getVectorData();
+                auto dequeData10 = sorter.getDequeData();
+                
+                testContainer(sorter, vecData10, "std::vector (10 elements)");
+                std::cout << MAGENTA << "----------------------------------------" << RESET << std::endl;
+                testContainer(sorter, dequeData10, "std::deque (10 elements)");;
+                std::cout << MAGENTA << "========================================" << RESET << std::endl;    
+            }
+            {
+                // 100 number test
+                sorter.clearData();
+                std::vector<int> test100;
+                for (int i = 100; i > 0; --i) test100.push_back(i);
+                sorter.setVectorData(test100);
+                sorter.setDequeData(std::deque<int>(test100.begin(), test100.end()));
+                
+                auto vecData100 = sorter.getVectorData();
+                auto dequeData100 = sorter.getDequeData();
+                
+                testContainer(sorter, vecData100, "std::vector (100 elements)");
+                std::cout << MAGENTA << "----------------------------------------" << RESET << std::endl;
+                testContainer(sorter, dequeData100, "std::deque (100 elements)");
+                std::cout << MAGENTA << "----------------------------------------" << RESET << std::endl;
+            }
+            return 0;
+        }
+
 		sorter.reserveInput(argc - 1);
         loadInput(argc, argv, sorter);
 
         auto vecData = sorter.getVectorData();
         auto dequeData = sorter.getDequeData();
-
-        // std::vector<std::pair<std::string, std::function<void()>>> tests;
-        // tests.push_back({"std::vector", [&]() { testContainer(sorter, vecData, "std::vector"); }});
-        // tests.push_back({"std::deque", [&]() { testContainer(sorter, dequeData, "std::deque"); }});
-
-        // for (auto const & test : tests) {
-        //     test.second(); // Execute the test function
-		// 	std::cout << MAGENTA << "----------------------------------------" << RESET << std::endl;
-        // }
 
 		testContainer(sorter, vecData, "std::vector");
         std::cout << MAGENTA << "----------------------------------------" << RESET << std::endl;
