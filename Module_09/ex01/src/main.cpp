@@ -6,7 +6,7 @@
 /*   By: nnabaeei <nnabaeei@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:18:41 by nnavidd           #+#    #+#             */
-/*   Updated: 2025/05/12 15:49:59 by nnabaeei         ###   ########.fr       */
+/*   Updated: 2025/05/22 16:16:54 by nnabaeei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,15 @@ std::string formatInt128(__int128 value, int precision = 5) {
 
 
 // Helper function to process and display a single expression
-void processExpression(const std::string& expression) {
+int processExpression(const std::string& expression) {
     RPN rpn;
     try {
         __int128 result = rpn.evaluate(expression);
         std::cout << CYAN "The result of: \"" ORG << expression << CYAN "\"" << CYAN " is => " GREEN << formatInt128(result) << RESET << std::endl;
+		return (0);
     } catch (const RPNException& e) {
         std::cerr << CYAN "The result of: \"" ORG << expression << CYAN "\"" << CYAN " is => " RED " Error: " << ORG << e.what() << RESET << std::endl;
+		return (1);
     }
 }
 
@@ -121,7 +123,7 @@ int main(int argc, char *argv[]) {
         }
     }
 	// Process the expression provided as argument
-    processExpression(argv[1]);
+    	return (processExpression(argv[1]));
     return 0;
 }
 
